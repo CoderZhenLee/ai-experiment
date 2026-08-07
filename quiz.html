@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="每日测验 — 复习学过的投资术语,答题记录与错题本">
+<title>每日测验 · 投资学堂</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .quiz-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+  .quiz-progress { font-family: var(--font-num); font-size: 13px; color: var(--text-faint); margin-left: auto; }
+  .quiz-progress b { color: var(--gold); }
+  .quiz-card { max-width: 640px; }
+  .q-type { font-size: 11px; font-weight: 700; color: var(--blue); background: rgba(91,140,255,.14); padding: 2px 10px; border-radius: 999px; }
+  .q-type.review { color: var(--gold); background: var(--gold-soft); }
+  .q-prompt { font-size: 17px; font-weight: 700; line-height: 1.6; margin: 14px 0 4px; }
+  .q-word { font-size: 22px; font-weight: 800; color: var(--gold); }
+  .q-options { display: grid; gap: 10px; margin-top: 14px; }
+  .q-opt {
+    text-align: left; font-size: 14px; color: var(--text-dim); line-height: 1.7;
+    background: var(--card-2); border: 1px solid var(--line);
+    border-radius: 10px; padding: 13px 16px; cursor: pointer;
+    transition: all .15s;
+  }
+  .q-opt:hover:not(:disabled) { border-color: rgba(232,184,75,.5); }
+  .q-opt.ok { background: var(--down-soft); border-color: var(--down); color: var(--down); }
+  .q-opt.no { background: rgba(255,82,87,.12); border-color: #ff5257; color: #ff5257; }
+  .q-opt.dim { opacity: .45; }
+  .q-opt:disabled { cursor: default; }
+  .q-feedback { margin-top: 14px; border-radius: 10px; padding: 12px 16px; font-size: 13.5px; line-height: 1.75; }
+  .q-feedback.right { background: var(--down-soft); color: var(--down); }
+  .q-feedback.wrong { background: rgba(255,82,87,.12); color: #ff5257; }
+  .q-feedback .fb-ex { color: var(--text-dim); margin-top: 6px; }
+  .q-feedback .fb-tip { color: var(--text-faint); font-size: 12.5px; margin-top: 4px; }
+  .q-next { margin-top: 14px; }
+  .q-result { text-align: center; padding: 30px 20px; }
+  .qr-score { font-family: var(--font-num); font-size: 44px; font-weight: 800; }
+  .qr-sub { color: var(--text-dim); margin-top: 6px; font-size: 14px; }
+  .qr-wrong { margin-top: 16px; text-align: left; }
+  .qr-wrong-item { font-size: 13px; color: var(--text-dim); padding: 8px 12px; border-bottom: 1px solid var(--line-soft); }
+  .qr-wrong-item b { color: #ff5257; }
+
+  .quiz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+  .stat-num { font-family: var(--font-num); font-size: 26px; font-weight: 800; }
+  .stat-label { font-size: 12px; color: var(--text-faint); margin-top: 2px; }
+  .wrong-book-item { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-dim); padding: 8px 0; border-bottom: 1px solid var(--line-soft); }
+  .wrong-book-item b { color: #ff5257; font-family: var(--font-num); }
+  .hist-item { font-size: 12.5px; color: var(--text-faint); padding: 6px 0; border-bottom: 1px solid var(--line-soft); display: flex; gap: 10px; }
+  .hist-item .h-ok { color: var(--down); } .hist-item .h-no { color: #ff5257; }
+  @media (max-width: 900px) { .quiz-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">¥</span>
+      <span class="brand-text">每日测验</span>
+      <span class="brand-sub">QUIZ · 复习巩固</span>
+    </a>
+    <nav class="nav">
+      <a href="#quiz">今日测验</a>
+      <a href="#stats">学习档案</a>
+      <a href="learn.html">词典</a>
+      <a href="index.html" style="color:var(--gold);font-weight:600">返回主页</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="打开菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <span class="day-badge" id="dataBadge">测验</span>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#quiz">今日测验</a>
+    <a href="#stats">学习档案</a>
+    <a href="learn.html">词典</a>
+    <a href="index.html" class="mm-admin">返回实验主页</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="section" id="quiz" style="padding-top:34px">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>今日测验</h2>
+          <p class="section-sub">每天 2 道新学 + 3 道复习(错题优先),答对答错都会记录,错题下次优先出现。</p>
+        </div>
+      </div>
+      <div class="quiz-head">
+        <span class="today-mark">每天最多 5 题</span>
+        <span class="quiz-progress" id="quizProgress"></span>
+      </div>
+      <div class="card quiz-card" id="quizBox"><!-- JS --></div>
+    </div>
+  </section>
+
+  <section class="section" id="stats" style="padding-top:10px">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>学习档案</h2>
+          <p class="section-sub">累计答题统计、错题本(答错过的词优先复习)、最近答题记录。</p>
+        </div>
+      </div>
+      <div class="quiz-grid" id="statsGrid"><!-- JS --></div>
+    </div>
+  </section>
+
+  <section class="section" id="disclaimer">
+    <div class="wrap">
+      <div class="card">
+        <p style="font-size:12.5px;color:var(--text-faint);line-height:1.8">
+          测验用于知识巩固,答错没关系——错题本会帮你记住。不构成投资建议,股市有风险。
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">¥10000 投资实验 · 每日测验 <span style="color:var(--text-faint)">— 学 + 测 + 复习,记得更牢</span></div>
+</footer>
+
+<script src="real_data.js"></script>
+<script src="portfolio_history.js"></script>
+<script src="glossary.js"></script>
+<script src="quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+  const $ = (id) => document.getElementById(id);
+  const Q = window.QUIZ_ENGINE;
+  let questions = [];
+  let idx = 0;
+  let score = 0;
+  let answered = 0;
+  let finished = false;
+
+  function renderStats() {
+    const s = Q.stats();
+    const wrongList = (window.GLOSSARY || []).filter((g) => s.wrongBook.some((w) => w.word === g.word));
+    const hist = Q.loadRecs().slice(-12).reverse();
+    $("statsGrid").innerHTML = `
+      <div class="card">
+        <h3>累计统计</h3>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px">
+          <div><div class="stat-num">${s.total}</div><div class="stat-label">总答题数</div></div>
+          <div><div class="stat-num" style="color:var(--down)">${s.correct}</div><div class="stat-label">答对</div></div>
+          <div><div class="stat-num" style="color:#ff5257">${s.wrong}</div><div class="stat-label">答错</div></div>
+          <div><div class="stat-num" style="color:var(--gold)">${s.rate}%</div><div class="stat-label">正确率</div></div>
+        </div>
+        <p style="margin-top:12px;font-size:12.5px;color:var(--text-faint)">答错的词会进入错题本,下次复习优先出现。</p>
+      </div>
+      <div class="card">
+        <h3>错题本 ${s.wrongBook.length ? `(${s.wrongBook.length} 个词)` : ""}</h3>
+        <div style="margin-top:10px">
+          ${s.wrongBook.length
+            ? s.wrongBook.map((w) => `
+                <div class="wrong-book-item">
+                  <span>${wrongList.find((g) => g.word === w.word) ? `<b>${w.word}</b>` : w.word}</span>
+                  <span>答错 <b>${w.count}</b> 次</span>
+                </div>`).join("")
+            : `<p class="ce-sub">暂无错题,继续保持!</p>`}
+        </div>
+        <h3 style="margin-top:16px">最近答题</h3>
+        <div style="margin-top:8px">
+          ${hist.length
+            ? hist.map((r) => `
+                <div class="hist-item">
+                  <span class="${r.correct ? "h-ok" : "h-no"}">${r.correct ? "✓" : "✗"}</span>
+                  <span>${r.word}</span>
+                  <span style="margin-left:auto">${(r.ts || "").slice(5, 16)}</span>
+                </div>`).join("")
+            : `<p class="ce-sub">还没有答题记录,先做今天的题吧。</p>`}
+        </div>
+      </div>`;
+  }
+
+  function start() {
+    questions = Q.buildDay();
+    if (!questions.length) {
+      $("quizBox").innerHTML = `<div class="empty-box" style="padding:30px"><p class="ce-sub">词典为空,无法出题。</p></div>`;
+      return;
+    }
+    idx = 0; score = 0; answered = 0; finished = false;
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    const q = questions[idx];
+    $("quizProgress").innerHTML = `第 <b>${idx + 1}</b> / ${questions.length} 题 · 已答对 <b>${score}</b>`;
+    const isReview = q.type === "选义" ? !todayIsNew(q.g) : true;
+    $("quizBox").innerHTML = `
+      <div class="q-type ${q.type === "选义" ? "" : "review"}">${q.type === "选义" ? (todayIsNew(q.g) ? "新学 · 选义" : "复习 · 选义") : (todayIsNew(q.g) ? "新学 · 选词" : "复习 · 选词")}</div>
+      <div class="q-prompt">${q.prompt}</div>
+      <div class="q-options">
+        ${q.options.map((o, i) => `<button class="q-opt" data-i="${i}" type="button">${String.fromCharCode(65 + i)}. ${o.text}</button>`).join("")}
+      </div>
+      <div class="q-feedback" style="display:none"></div>
+      <button class="dm-export q-next" id="qNext" type="button" style="display:none">下一题 →</button>`;
+
+    $("quizBox").querySelectorAll(".q-opt").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (answered) return;
+        answered = 1;
+        const i = +btn.dataset.i;
+        const opt = q.options[i];
+        const ok = opt.correct;
+        if (ok) score++;
+        // 记录
+        const recs = Q.loadRecs();
+        recs.push({ date: new Date().toISOString().slice(0, 10), ts: new Date().toISOString().slice(0, 19), word: q.g.word, type: q.type, correct: ok, answer: String.fromCharCode(65 + i) });
+        Q.saveRecs(recs);
+        // 样式
+        q.options.forEach((o, j) => {
+          const el = $("quizBox").querySelector(`.q-opt[data-i="${j}"]`);
+          el.disabled = true;
+          if (o.correct) el.classList.add("ok");
+          else if (j === i) el.classList.add("no");
+          else el.classList.add("dim");
+        });
+        const fb = $("quizBox").querySelector(".q-feedback");
+        fb.style.display = "block";
+        fb.className = "q-feedback " + (ok ? "right" : "wrong");
+        fb.innerHTML = (ok ? "✓ 回答正确! " : "✗ 答错了,正确答案是 " + q.options.find((o) => o.correct).text + " ") +
+          `<span style="font-weight:700">「${q.g.word}」</span>
+          <div class="fb-ex">真实例子:${q.explain}</div>
+          <div class="fb-tip">小贴士:${q.tip}</div>`;
+        const next = $("qNext");
+        next.style.display = "inline-block";
+        next.textContent = idx + 1 < questions.length ? "下一题 →" : "查看结果";
+      });
+    });
+    $("qNext").addEventListener("click", () => {
+      if (idx + 1 < questions.length) { idx++; answered = 0; renderQuestion(); }
+      else renderResult();
+    });
+  }
+
+  function todayIsNew(g) {
+    const daily = window.GLOSSARY_DAILY || 3;
+    const start = new Date(window.GLOSSARY_START + "T00:00:00");
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const dayIndex = Math.max(0, Math.floor((today - start) / 86400000));
+    const todayWords = (window.GLOSSARY || []).slice(dayIndex * daily, dayIndex * daily + daily);
+    return todayWords.some((w) => w.word === g.word);
+  }
+
+  function renderResult() {
+    finished = true;
+    const wrongs = questions.filter((q) => {
+      const recs = Q.loadRecs();
+      const r = recs.filter((x) => x.word === q.g.word && x.ts >= new Date().toISOString().slice(0, 10)).pop();
+      return r && !r.correct;
+    });
+    $("quizProgress").innerHTML = "已完成";
+    $("quizBox").innerHTML = `
+      <div class="q-result">
+        <div class="qr-score" style="color:${score / questions.length >= 0.6 ? "var(--gold)" : "#ff5257"}">${score} / ${questions.length}</div>
+        <div class="qr-sub">${score === questions.length ? "满分!全部答对,今天掌握得很扎实 🎉" : score / questions.length >= 0.6 ? "不错!错题已进错题本,明天复习会再考。" : "继续加油!答错的词已进错题本,明天优先复习。"}</div>
+        ${wrongs.length ? `<div class="qr-wrong">
+          <div style="font-size:12px;color:var(--text-faint);margin-bottom:6px">本日错题(${wrongs.length})</div>
+          ${wrongs.map((q) => `<div class="qr-wrong-item"><b>${q.g.word}</b> — ${q.explain}</div>`).join("")}
+        </div>` : ""}
+        <button class="dm-export q-next" id="qRetry" type="button" style="margin-top:18px">再练一遍</button>
+      </div>`;
+    $("qRetry").addEventListener("click", start);
+    renderStats();
+  }
+
+  const mb = $("menuBtn"), mm = $("mobileMenu");
+  mb.addEventListener("click", () => { const o = mm.classList.toggle("open"); mb.classList.toggle("active", o); });
+  mm.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => { mm.classList.remove("open"); mb.classList.remove("active"); }));
+
+  start();
+  renderStats();
+})();
+</script>
+</body>
+</html>
