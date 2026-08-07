@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="¥10000 投资实验 · 策略推荐后台 —— 查看推荐逻辑、候选池评分拆解与推荐理由,数据完全透明可验证">
+<title>策略推荐后台 — ¥10000 投资实验</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ========== 后台专用样式 ========== */
+.admin-kicker { font-size: 12px; letter-spacing: 1px; color: var(--text-faint); font-family: var(--font-num); }
+
+.banner {
+  margin-top: 30px;
+  background: linear-gradient(120deg, rgba(232,184,75,.10), rgba(91,140,255,.08));
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 22px;
+  display: flex; gap: 16px; align-items: flex-start;
+  font-size: 13.5px; color: var(--text-dim);
+}
+.banner b { color: var(--text); }
+.banner .ico { font-family: var(--font-num); color: var(--gold); font-weight: 800; font-size: 16px; line-height: 1.2; }
+
+.admin-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 18px; align-items: start; }
+
+/* 候选池表格 */
+.pool-wrap { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow-x: auto; }
+.pool-table { width: 100%; border-collapse: collapse; min-width: 640px; }
+.pool-table th, .pool-table td { padding: 11px 14px; text-align: left; white-space: nowrap; }
+.pool-table thead th { font-size: 12px; color: var(--text-faint); font-weight: 600; border-bottom: 1px solid var(--line-soft); }
+.pool-table tbody tr { border-bottom: 1px solid var(--line-soft); cursor: pointer; transition: background .15s; }
+.pool-table tbody tr:last-child { border-bottom: none; }
+.pool-table tbody tr:hover { background: rgba(232, 184, 75, 0.05); }
+.pool-table tbody tr.active { background: rgba(232, 184, 75, 0.10); }
+.pool-table .row-no { font-family: var(--font-num); font-size: 12.5px; color: var(--text-faint); }
+.tag { display: inline-block; font-size: 10.5px; font-family: var(--font-num); padding: 2px 8px; border-radius: 6px; margin-left: 6px; vertical-align: middle; }
+.tag.pool { color: var(--gold); background: var(--gold-soft); border: 1px solid rgba(232,184,75,.3); }
+.tag.hold { color: var(--blue); background: rgba(91,140,255,.14); }
+.tag.alert { color: var(--up); background: var(--up-soft); }
+
+/* 推荐理由详情卡 */
+.detail-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 26px; }
+.detail-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.detail-head h3 { font-size: 21px; font-weight: 800; }
+.detail-head .dcode { font-family: var(--font-num); font-size: 13px; color: var(--text-faint); }
+.detail-head .dind { font-size: 12px; color: var(--text-dim); padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); }
+.detail-brief { margin-top: 10px; font-size: 13.5px; color: var(--text-dim); }
+.detail-score-row { display: flex; align-items: center; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+.detail-score-row .big { font-family: var(--font-num); font-size: 34px; font-weight: 800; }
+
+.dim-breakdown { margin-top: 18px; display: grid; gap: 12px; }
+.dim-line { display: grid; grid-template-columns: 92px 1fr; gap: 14px; align-items: center; }
+.dim-line .dname { font-size: 13px; color: var(--text-dim); }
+.dim-line .dbar { height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; }
+.dim-line .dfill { height: 100%; border-radius: 4px; }
+.dim-line .dval { font-family: var(--font-num); font-size: 13px; font-weight: 700; width: 36px; text-align: right; }
+.dim-line .ddesc { grid-column: 2; font-size: 12.5px; color: var(--text-faint); margin-top: -8px; }
+
+.reason-box { margin-top: 18px; border-top: 1px solid var(--line-soft); padding-top: 16px; display: grid; gap: 10px; }
+.reason-item { display: flex; gap: 10px; font-size: 13.5px; line-height: 1.65; }
+.reason-item .rk { font-family: var(--font-num); font-weight: 800; font-size: 12px; width: 52px; flex-shrink: 0; padding-top: 2px; }
+.rk.plus { color: var(--up); }
+.rk.risk { color: var(--down); }
+.rk.act { color: var(--gold); }
+.reason-item .rt { color: var(--text-dim); }
+.reason-item .rt b { color: var(--text); }
+
+/* 权重调节器 */
+.weight-editor { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 26px; }
+.weight-editor .we-row { margin-bottom: 16px; }
+.weight-editor .we-head { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px; }
+.weight-editor .we-head b { color: var(--text); }
+.weight-editor .we-head .wv { font-family: var(--font-num); color: var(--gold); font-weight: 700; }
+.weight-editor input[type=range] { width: 100%; accent-color: var(--gold); }
+.weight-editor .we-total { font-size: 12.5px; color: var(--text-faint); margin-top: 4px; }
+.weight-editor .we-total b { color: var(--text); font-family: var(--font-num); }
+.weight-editor .we-reset { margin-top: 14px; background: var(--line); color: var(--text-dim); border: none; border-radius: 8px; padding: 8px 16px; font-size: 12.5px; cursor: pointer; transition: color .15s; }
+.weight-editor .we-reset:hover { color: var(--gold); }
+.we-rank-note { margin-top: 14px; font-size: 12px; color: var(--text-faint); border-top: 1px solid var(--line-soft); padding-top: 12px; }
+
+/* 数据管理 */
+.data-mgmt { margin-top: 18px; }
+.data-mgmt .dm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+.dm-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+.dm-card h4 { font-size: 15px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.dm-card h4::before { content: ""; width: 4px; height: 15px; border-radius: 2px; background: var(--gold); }
+.dm-card ol, .dm-card ul { padding-left: 18px; display: grid; gap: 8px; }
+.dm-card li { font-size: 13px; color: var(--text-dim); }
+.dm-card li b { color: var(--text); }
+.dm-card code { font-family: var(--font-num); font-size: 12px; color: var(--gold); background: var(--gold-soft); padding: 1px 6px; border-radius: 5px; }
+.dm-export {
+  margin-top: 16px; width: 100%;
+  background: var(--gold); color: #14100a; border: none;
+  border-radius: 10px; padding: 12px; font-size: 14px; font-weight: 700; cursor: pointer;
+  transition: filter .15s;
+}
+.dm-export:hover { filter: brightness(1.08); }
+
+.alert-strip { margin-top: 16px; display: grid; gap: 10px; }
+.alert-item { display: flex; gap: 12px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; font-size: 13px; }
+.alert-item .a-ico { font-size: 15px; font-weight: 800; font-family: var(--font-num); }
+.alert-item.sell .a-ico { color: var(--up); }
+.alert-item.warn .a-ico { color: var(--gold); }
+
+@media (max-width: 900px) {
+  .admin-grid { grid-template-columns: 1fr; }
+  .data-mgmt .dm-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 顶栏(后台) ============ -->
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">¥</span>
+      <span class="brand-text">策略推荐后台</span>
+      <span class="brand-sub">ADMIN · WHY THESE STOCKS?</span>
+    </a>
+    <nav class="nav">
+      <a href="#pool">候选池</a>
+      <a href="#reason">推荐理由</a>
+      <a href="#weights">权重调节</a>
+      <a href="#trading">交易执行台</a>
+      <a href="#data">数据管理</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="打开菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <span class="day-badge" id="dataBadge">REAL · 加载中</span>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#macro">宏观速览</a>
+    <a href="#pool">候选池</a>
+    <a href="#reason">推荐理由</a>
+    <a href="#weights">权重调节</a>
+    <a href="#trading">交易执行台</a>
+    <a href="#data">数据管理</a>
+    <a href="index.html" class="mm-admin">返回实验主页</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" style="padding-top:40px;padding-bottom:20px">
+    <div class="wrap">
+      <p class="hero-kicker"><span class="dot"></span>推荐逻辑完全透明 · 后台演示版 · <b style="color:var(--gold)">当前为演示数据,非真实行情</b></p>
+      <h1>为什么推荐这几只股票?</h1>
+      <p class="hero-sub">候选池 → 五维打分 → 加权综合 → 排名 → 前 5 名进入观察池。这里展示每一步、每一分是怎么来的。</p>
+
+      <div class="banner">
+        <span class="ico">!</span>
+        <span>
+          <b>数据真实性说明:</b> 本后台与主站的推荐、评分、交易均为 <b>演示数据</b>(用固定种子生成,用于展示产品形态),<b>不是真实行情,也不构成任何投资建议</b>。
+          接入真实数据的方式见下方「数据管理」板块 —— 可以手动更新、半自动脚本,或对接行情 API 全自动生成。
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 宏观速览 ============ -->
+  <section class="section" id="macro" style="padding-top:20px">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>宏观速览</h2>
+          <p class="section-sub">国际形势风向标:原油 / 黄金 / 美元指数 / 人民币 / 恒指 —— 参考层,不参与评分,但影响你手里的票。</p>
+        </div>
+      </div>
+      <div class="macro-grid" id="macroGrid"><!-- JS --></div>
+      <div class="macro-note" id="macroNote"><!-- JS --></div>
+    </div>
+  </section>
+
+  <!-- ============ 策略模型概览 ============ -->
+  <section class="section" id="model" style="padding-top:20px">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>评分模型</h2>
+          <p class="section-sub">五维加权综合分 = Σ(维度分 × 权重),0–100 分。</p>
+        </div>
+      </div>
+      <div class="card" style="display:grid;grid-template-columns:repeat(6,1fr);gap:14px" id="weightModel">
+        <!-- JS 渲染 5 个维度卡 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 候选池 + 推荐理由 ============ -->
+  <section class="section" id="pool">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>候选池与推荐理由</h2>
+          <p class="section-sub">点击任意一行,查看完整评分拆解与推荐理由。</p>
+        </div>
+      </div>
+
+      <div class="admin-grid">
+        <div class="pool-wrap">
+          <table class="pool-table">
+            <thead>
+              <tr>
+                <th>#</th><th>标的</th><th>行业</th><th>现价</th><th>涨跌</th><th>情绪</th><th>综合分</th><th>评级</th><th>今日观察池</th>
+              </tr>
+            </thead>
+            <tbody id="poolBody"><!-- JS --></tbody>
+          </table>
+        </div>
+
+        <div class="detail-card" id="detailCard">
+          <!-- JS: 默认展示第一名 -->
+        </div>
+      </div>
+
+      <div class="section-head" style="margin-top:30px">
+        <div>
+          <h2>持仓信号</h2>
+          <p class="section-sub">当前持仓标的的模型信号(真实评分)。</p>
+        </div>
+      </div>
+      <div class="alert-strip" id="alertStrip"><!-- JS --></div>
+    </div>
+  </section>
+
+  <!-- ============ 交易执行台 ============ -->
+  <section class="section" id="trading">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>交易执行台</h2>
+          <p class="section-sub">系统生成真实信号 → 你在券商 App 手动执行 → 录入真实成交(带固定时间戳)。合规边界:本系统不代客下单。</p>
+        </div>
+      </div>
+      <div id="tradingBox"><!-- JS --></div>
+    </div>
+  </section>
+
+  <!-- ============ 权重调节器 ============ -->
+  <section class="section" id="weights">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>权重调节 · 实时重算</h2>
+          <p class="section-sub">拖动权重,实时看排名如何变化 —— 这就是“为什么推荐这几只”的最直观答案。</p>
+        </div>
+      </div>
+      <div class="weight-editor" id="weightEditor"><!-- JS --></div>
+    </div>
+  </section>
+
+  <!-- ============ 数据管理 ============ -->
+  <section class="section" id="data">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>数据管理</h2>
+          <p class="section-sub">数据存在哪里、怎么更新、怎么换成真实行情。</p>
+        </div>
+      </div>
+
+      <div class="data-mgmt">
+        <div class="card">
+          <h3>数据源状态</h3>
+          <div id="dataStatus"><!-- JS --></div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>数据结构</h3>
+          <p style="font-size:13.5px;color:var(--text-dim)">
+            真实模式数据集中在 <code>real_data.json</code>(由 <code>update_data.py</code> 自动生成);演示数据在 <code>data.js</code>。
+          </p>
+          <ul class="rules" style="margin-top:12px">
+            <li><code>update_data.py</code> — 拉取真实行情/K线/财务,计算研报级子指标并评分</li>
+            <li><code>real_data.json</code> — 真实模式数据源:pool(10只)+ scores + benchmark + 子指标明细</li>
+            <li><code>trades_record.json</code> — 你的真实成交记录(从交易执行台导出)</li>
+            <li><code>portfolio_history.json</code> — 每日净值快照,主站真实曲线数据源</li>
+            <li><code>data.js</code> — 演示数据(展示产品形态,可随时切回)</li>
+          </ul>
+        </div>
+
+        <div class="dm-grid">
+          <div class="dm-card">
+            <h4>方式一 · 手动更新(零成本)</h4>
+            <ol>
+              <li>每天收盘后,打开 <code>data.js</code></li>
+              <li>按当日行情更新每只股票的 <code>dims</code> 五维分与 <code>trades</code> 价格</li>
+              <li>保存,刷新页面即可 —— 主站与后台同步生效</li>
+            </ol>
+          </div>
+          <div class="dm-card">
+            <h4>方式二 · 脚本半自动(推荐)</h4>
+            <ol>
+              <li>用 Python 脚本拉行情(新浪/腾讯免费接口,或券商/付费数据源)</li>
+              <li>按模型公式计算五维分:<code>PE 分位 → 估值</code>、<code>ROE → 盈利</code>、<code>营收增速 → 成长</code>、<code>均线/动量 → 趋势</code>、<code>波动率 → 波动</code></li>
+              <li>脚本输出 <code>data.js</code>,配合定时任务每天自动更新</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="dm-card" style="margin-top:16px">
+          <h4>方式三 · 全自动后端(规模化)</h4>
+          <p style="font-size:13px;color:var(--text-dim);line-height:1.7">
+            架构:<code>Python 策略服务</code> 定时拉行情 → 计算评分 → 写入 <code>PostgreSQL</code>;<code>Node/Next.js</code> 后端提供 JSON API;<code>index.html</code> 改为 fetch 接口数据。
+            配合后台管理系统,推荐记录带固定时间戳入库,确保“事后不可修改”。
+          </p>
+        </div>
+
+        <button class="dm-export" id="exportBtn">导出当前数据 JSON(download data.json)</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 合规 ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="card disclaimer">
+        <h3>重要声明</h3>
+        <p>本后台为投资策略实验的演示系统,所有评分与推荐 <b>不构成针对任何个人的投资建议</b>,不构成收益承诺。演示数据非真实行情,接入真实数据前请确认数据源合规性。股市有风险,入市需谨慎。</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <span class="brand-text">¥10000 投资实验 · 推荐后台</span>
+      <p class="footer-sub"><a href="index.html" style="color:var(--gold);text-decoration:none">← 返回实验主页</a></p>
+    </div>
+    <p class="footer-copy">© 2026 ¥10000 投资实验 · 内容不构成投资建议</p>
+  </div>
+</footer>
+
+<script src="real_data.js"></script>
+<script src="data.js"></script>
+<script src="recommend.js"></script>
+</body>
+</html>

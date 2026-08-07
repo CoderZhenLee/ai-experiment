@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="我用 ¥10,000 挑战 180 天投资实验 —— 公开规则、真实记录、每日更新。半年后,这套规则化策略到底有没有用?">
+<title>¥10000 投资实验 — 180 天真实记录</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ 顶栏 ============ -->
+<header class="topbar" id="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">¥</span>
+      <span class="brand-text">10000 投资实验</span>
+      <span class="brand-sub">180 DAYS · REAL MONEY</span>
+    </a>
+    <nav class="nav">
+      <a href="#top">今日</a>
+      <a href="#curve">收益曲线</a>
+      <a href="#operations">今日操作</a>
+      <a href="#history">历史记录</a>
+      <a href="#strategy">策略说明</a>
+      <a href="#compare">基准对比</a>
+    <a href="learn.html" class="mm-admin">投资学堂</a>
+      <a href="learn.html" style="color:var(--gold);font-weight:600">投资学堂</a>
+      <a href="recommend.html" style="color:var(--gold);font-weight:600">推荐后台</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="打开菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <span class="day-badge" id="dayBadge">DAY 37 / 180</span>
+    <span class="data-badge" id="dataBadge"><span class="dot-demo"></span>加载中</span>
+    <button class="mode-toggle" id="modeToggle" type="button">切换</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#top">今日</a>
+    <a href="#curve">收益曲线</a>
+    <a href="#operations">今日操作</a>
+    <a href="#history">历史记录</a>
+    <a href="#strategy">策略说明</a>
+    <a href="#compare">基准对比</a>
+    <a href="learn.html" class="mm-admin">投资学堂</a>
+      <a href="learn.html" style="color:var(--gold);font-weight:600">投资学堂</a>
+    <a href="recommend.html" class="mm-admin">推荐后台</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ Hero ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="hero-kicker"><span class="dot"></span>公开规则 · 真实资金 · 每日记录 · 时间戳不可篡改</p>
+      <h1>我用 <span class="accent">¥10,000</span> 挑战 <span class="accent">180 天</span> 投资实验</h1>
+      <p class="hero-sub">每天公开一套规则化策略的完整交易记录与收益曲线 —— 半年后,这套方法到底有没有用,我们一起看结果。</p>
+
+      <div class="hero-panel">
+        <div class="hero-main">
+          <div class="day-ring-wrap">
+            <svg class="day-ring" viewBox="0 0 120 120" aria-label="实验进度 37/180">
+              <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+              <circle class="ring-fg" id="ringFg" cx="60" cy="60" r="52"></circle>
+              <text x="60" y="57" text-anchor="middle" class="ring-day">DAY 37</text>
+              <text x="60" y="78" text-anchor="middle" class="ring-total">/ 180</text>
+            </svg>
+          </div>
+          <div class="money-block">
+            <div class="money-row">
+              <span class="money-from">¥10,000</span>
+              <svg class="arrow" viewBox="0 0 40 20" width="40" height="20" aria-hidden="true">
+                <path d="M2 12 L32 12 L26 5 M32 12 L26 19" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="money-to">¥10,683</span>
+              <span class="return-pill up">+6.83%</span>
+            </div>
+            <p class="money-note">今日收益 <span class="up">+0.81%</span> · 已实现 +¥312 · 持仓浮盈 +¥371</p>
+          </div>
+        </div>
+
+        <div class="hero-stats" id="heroStats">
+          <!-- JS 渲染 5 个核心指标 -->
+        </div>
+      </div>
+
+      <p class="hero-tagline">“我拿真实资金,按一套公开规则投资,连续 180 天每天公开记录 —— 半年后看这套方法到底有没有用。”</p>
+    </div>
+  </section>
+
+  <!-- ============ 关键数据条 ============ -->
+  <section class="stat-strip">
+    <div class="wrap stat-strip-grid" id="statStrip">
+      <!-- JS 渲染 -->
+    </div>
+  </section>
+
+  <!-- ============ 收益曲线 ============ -->
+  <!-- ============ 今日学堂 ============ -->
+  <section class="section lesson" id="lesson">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>今日学堂 <span class="lesson-tag">每天 3 个词 · 小白友好</span></h2>
+          <p class="section-sub">投资术语大白话 + 候选池真实数据举例,日积月累,慢慢就看懂盘了。</p>
+        </div>
+        <a href="learn.html" class="lesson-more">全部词典 →</a>
+      </div>
+      <div class="lesson-grid" id="lessonGrid"><!-- JS --></div>
+      <p class="lesson-progress" id="lessonProgress"></p>
+    </div>
+  </section>
+
+  <section class="section" id="curve">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>收益曲线</h2>
+          <p class="section-sub">本实验净值 vs 沪深300,截至 DAY 37。金点 = 买入,蓝点 = 卖出。</p>
+        </div>
+        <div class="legend">
+          <span class="lg"><i class="swatch sw-combo"></i>本实验</span>
+          <span class="lg"><i class="swatch sw-bench"></i>沪深300</span>
+          <span class="lg"><i class="swatch sw-buy"></i>买入</span>
+          <span class="lg"><i class="swatch sw-sell"></i>卖出</span>
+        </div>
+      </div>
+      <div class="chart-wrap" id="chartWrap">
+        <svg id="curveChart" viewBox="0 0 1040 340" preserveAspectRatio="none" role="img" aria-label="收益曲线图"></svg>
+        <div class="chart-tooltip" id="chartTooltip"></div>
+      </div>
+      <div class="chart-axes">
+        <span>DAY 01 · ¥10,000</span>
+        <span id="chartEndLabel">DAY 37 · ¥10,683</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 今日策略 ============ -->
+  <section class="section" id="today">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>今日策略 · DAY 37</h2>
+          <p class="section-sub">策略从候选池按 5 维指标打分排名,前 5 名进入观察池并给出评级建议。</p>
+        </div>
+        <span class="pill muted">生成时间戳 2026-08-05 09:31:22</span>
+      </div>
+      <div class="score-table-wrap">
+        <table class="score-table" id="scoreTable">
+          <thead>
+            <tr>
+              <th>排名</th>
+              <th>标的</th>
+              <th>评级</th>
+              <th>综合分</th>
+              <th colspan="6">六维评分</th>
+            </tr>
+            <tr class="dims-row">
+              <th></th><th></th><th></th><th></th>
+              <th>估值 22%</th><th>盈利 22%</th><th>成长 18%</th><th>趋势 14%</th><th>波动 14%</th><th>情绪 10%</th>
+            </tr>
+          </thead>
+          <tbody><!-- JS 渲染 --></tbody>
+        </table>
+      </div>
+      <div class="strategy-callout">
+        <strong>今日策略结论:</strong> <span id="strategyCallout"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 今日操作 ============ -->
+  <section class="section" id="operations">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>今日操作</h2>
+          <p class="section-sub">每一笔都以固定时间戳记录,事后不可修改,确保半年后的公信力。</p>
+        </div>
+      </div>
+      <ul class="ops-list" id="opsList"><!-- JS 渲染 --></ul>
+      <p class="immutable-note">
+        <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M8 1l5.5 2v4.2c0 3.4-2.3 5.9-5.5 7.3-3.2-1.4-5.5-3.9-5.5-7.3V3L8 1z" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        所有交易记录时间戳固定,写入后不可修改 · 公开可验证
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ AI 推荐 vs 实际执行 ============ -->
+  <section class="section" id="compare">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>AI 推荐 vs 实际执行</h2>
+          <p class="section-sub">“预测”与“真实交易”分开记录 —— 半年后统计到底谁更靠谱。</p>
+        </div>
+      </div>
+      <div class="compare-grid" id="compareGrid"><!-- JS 渲染 --></div>
+      <p class="compare-note" id="compareNote"></p>
+    </div>
+  </section>
+
+  <!-- ============ 每日日志 ============ -->
+  <section class="section" id="log">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>每日日志</h2>
+          <p class="section-sub">每天固定模板,连续 180 天 —— 这是一部“连续剧”,不是荐股号。</p>
+        </div>
+      </div>
+      <div class="log-list" id="logList"><!-- JS 渲染 --></div>
+    </div>
+  </section>
+
+  <!-- ============ 历史交易记录 ============ -->
+  <section class="section" id="history">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>历史交易记录</h2>
+          <p class="section-sub" id="tradeCountLabel">DAY 01 至今全部 17 笔交易,时间戳固定。</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="trades-table" id="tradesTable">
+          <thead>
+            <tr>
+              <th>Day</th><th>日期</th><th>方向</th><th>标的</th><th>数量</th><th>成交价</th><th>金额</th><th>盈亏</th><th>状态</th>
+            </tr>
+          </thead>
+          <tbody id="tradesTableBody"><!-- JS 渲染 --></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 策略说明 ============ -->
+  <section class="section" id="strategy">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>策略说明</h2>
+          <p class="section-sub">策略完全透明 —— 不做黑箱荐股,做一套可被检验的规则。</p>
+        </div>
+      </div>
+
+      <div class="flow">
+        <div class="flow-step"><span class="step-no">1</span><strong>数据</strong><small>行情 · 财报 · 波动率</small></div>
+        <i class="flow-arrow">→</i>
+        <div class="flow-step"><span class="step-no">2</span><strong>筛选</strong><small>剔除 ST / 流动性差</small></div>
+        <i class="flow-arrow">→</i>
+        <div class="flow-step"><span class="step-no">3</span><strong>打分</strong><small>五维加权评分</small></div>
+        <i class="flow-arrow">→</i>
+        <div class="flow-step"><span class="step-no">4</span><strong>排名</strong><small>前 5 名进观察池</small></div>
+        <i class="flow-arrow">→</i>
+        <div class="flow-step"><span class="step-no">5</span><strong>买入</strong><small>按规则执行</small></div>
+        <i class="flow-arrow">→</i>
+        <div class="flow-step"><span class="step-no">6</span><strong>持有 / 卖出</strong><small>止损 · 止盈 · 轮换</small></div>
+      </div>
+
+      <div class="strategy-grid">
+        <div class="card">
+          <h3>综合评分模型</h3>
+          <div class="weight-bars" id="weightBars"><!-- JS 渲染 --></div>
+        </div>
+        <div class="card">
+          <h3>执行纪律</h3>
+          <ul class="rules">
+            <li><b>评分 &gt; 85 (A)</b> → 买入;75–84 (B) → 关注,进入观察池</li>
+            <li><b>评分 &lt; 60 (D)</b> → 卖出 / 移出观察池</li>
+            <li>单笔仓位 ≤ 总资产 10%,单日最多 3 笔</li>
+            <li>回撤 &gt; 15% 触发强制复盘,暂停新增买入 3 天</li>
+            <li>所有记录带固定时间戳,事后不可修改</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card stage-note">
+        <h3>阶段规划</h3>
+        <p><b>第一阶段(当前):</b> 公开实验网站,每天自动生成 Day 01 → Day 180 记录,把当天结果截图/录屏发到社交平台。</p>
+        <p><b>第二阶段:</b> 用户规模起来后,提供筛选 / 组合分析 / 回测 / AI 研究助手工具(免费 + Pro 订阅)。</p>
+        <p><b>合规定位:</b> 投资数据 + 策略研究 + 模拟/公开实验 + 工具,不提供“收费荐股 / 代客理财 / 承诺收益”。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 合规声明 ============ -->
+  <section class="section" id="disclaimer">
+    <div class="wrap">
+      <div class="card disclaimer">
+        <h3>重要声明</h3>
+        <p>本网站为个人投资实验的公开记录,所有内容仅用于信息与研究目的,<b>不构成针对任何个人的投资建议</b>,不构成任何收益承诺。实验数据(含模拟演示数据)可能存在延迟或误差,过往表现不代表未来收益。股市有风险,入市需谨慎。</p>
+        <p class="disclaimer-sub">投资有风险 · 本实验可能亏损 · 半年后无论是 +38% 还是 -7%,都是真实结果。</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <span class="brand-text">¥10000 投资实验</span>
+      <p class="footer-sub">公开规则 · 真实资金 · 每日记录 · 180 天见分晓</p>
+    </div>
+    <p class="footer-copy">© 2026 ¥10000 投资实验 · 内容不构成投资建议</p>
+  </div>
+</footer>
+
+<script src="real_data.js"></script>
+<script src="glossary.js"></script>
+<script src="portfolio_history.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

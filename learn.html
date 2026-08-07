@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="投资术语词典 — 小白友好版,大白话解释 + 候选池真实数据举例">
+<title>投资学堂 · 术语词典</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .lesson-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .lesson-card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 14px; padding: 20px;
+    display: flex; flex-direction: column; gap: 8px;
+    transition: border-color .15s;
+  }
+  .lesson-card:hover { border-color: rgba(232,184,75,.35); }
+  .lesson-card.learned { opacity: .82; }
+  .lesson-card.learned .lc-word::after { content: " ✓"; color: var(--down); }
+  .lc-head { display: flex; align-items: center; gap: 8px; }
+  .lc-no { font-family: var(--font-num); font-size: 11px; color: var(--text-faint); }
+  .lc-cat {
+    font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 999px;
+    color: var(--gold); background: var(--gold-soft);
+  }
+  .lc-done {
+    margin-left: auto; font-size: 11.5px;
+    background: transparent; border: 1px solid var(--line);
+    color: var(--text-faint); border-radius: 8px; padding: 4px 12px;
+    cursor: pointer; transition: all .15s;
+  }
+  .lc-done.on { color: var(--down); border-color: rgba(47,201,140,.5); background: var(--down-soft); }
+  .lc-word { font-size: 19px; font-weight: 700; }
+  .lc-py { font-size: 12px; color: var(--text-faint); font-family: var(--font-num); }
+  .lc-plain { font-size: 13.5px; color: var(--text-dim); line-height: 1.75; margin: 4px 0; }
+  .lc-example { font-size: 12.5px; color: var(--text); line-height: 1.7; background: var(--card-2); border: 1px solid var(--line-soft); border-radius: 10px; padding: 10px 12px; margin-top: 4px; }
+  .lc-ex-tag { display: inline-block; font-size: 10.5px; font-weight: 700; color: var(--gold); margin-right: 6px; }
+  .lc-tip { font-size: 12px; color: var(--text-faint); line-height: 1.65; }
+  .lc-tip-tag { display: inline-block; font-size: 10.5px; font-weight: 700; color: var(--blue); margin-right: 6px; }
+  .lesson-progress { margin-top: 16px; font-size: 13px; color: var(--text-dim); line-height: 1.8; }
+  .cat-filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+  .cat-filter button {
+    background: var(--card-2); border: 1px solid var(--line);
+    color: var(--text-dim); border-radius: 999px; padding: 6px 16px;
+    font-size: 12.5px; cursor: pointer; transition: all .15s;
+  }
+  .cat-filter button.on { color: var(--gold); border-color: rgba(232,184,75,.5); background: var(--gold-soft); }
+  .today-mark {
+    font-size: 10.5px; font-weight: 700; color: var(--down);
+    background: var(--down-soft); padding: 2px 8px; border-radius: 999px;
+  }
+  @media (max-width: 900px) { .lesson-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .lesson-grid { grid-template-columns: 1fr; } .lesson-card { padding: 16px; } }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">¥</span>
+      <span class="brand-text">投资学堂</span>
+      <span class="brand-sub">LEARN · 术语词典</span>
+    </a>
+    <nav class="nav">
+      <a href="#lesson">今日学习</a>
+      <a href="#all">全部词典</a>
+      <a href="index.html" style="color:var(--gold);font-weight:600">返回主页</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="打开菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <span class="day-badge" id="dataBadge">词典</span>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#lesson">今日学习</a>
+    <a href="#all">全部词典</a>
+    <a href="index.html" class="mm-admin">返回实验主页</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="section" id="lesson" style="padding-top:34px">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>今日学习 <span class="today-mark">每天 3 个词</span></h2>
+          <p class="section-sub">先学今天的 3 个词,再看下面全部词典。用候选池真实数据举的例子,最贴地气。</p>
+        </div>
+      </div>
+      <div class="lesson-grid" id="lessonGrid"><!-- JS --></div>
+      <p class="lesson-progress" id="lessonProgress"></p>
+    </div>
+  </section>
+
+  <section class="section" id="all" style="padding-top:10px">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>全部词典 <span id="dictCount"></span></h2>
+          <p class="section-sub">分类浏览全部术语。「今日新学」标记 = 今天的 3 个词;其余可自由预习复习。</p>
+        </div>
+      </div>
+      <div class="cat-filter" id="catFilter"></div>
+      <div class="lesson-grid" id="allGrid"><!-- JS --></div>
+    </div>
+  </section>
+
+  <section class="section" id="disclaimer">
+    <div class="wrap">
+      <div class="card">
+        <p style="font-size:12.5px;color:var(--text-faint);line-height:1.8">
+          词典内容用于投资知识学习,不构成投资建议。股市有风险,入市需谨慎。
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">¥10000 投资实验 · 投资学堂 <span style="color:var(--text-faint)">— 每天学 3 个词,慢慢看懂投资</span></div>
+</footer>
+
+<script src="real_data.js"></script>
+<script src="portfolio_history.js"></script>
+<script src="glossary.js"></script>
+<script src="app.js"></script>
+<script>
+/* 词典页专用渲染(复用 app.js 的 renderLesson 逻辑 + 全量词典) */
+(function () {
+  "use strict";
+  const $ = (id) => document.getElementById(id);
+  const list = window.GLOSSARY || [];
+  const daily = window.GLOSSARY_DAILY || 3;
+  const start = new Date(window.GLOSSARY_START + "T00:00:00");
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const dayIndex = Math.max(0, Math.floor((today - start) / 86400000));
+  const todayWords = list.slice(dayIndex * daily, dayIndex * daily + daily);
+  const todaySet = new Set(todayWords.map((w) => w.word));
+  const seen = () => (localStorage.getItem("exp_learned") || "").split(",").filter(Boolean);
+  const fmt = (n, d) => n == null ? "—" : n.toLocaleString("zh-CN", { minimumFractionDigits: d || 2, maximumFractionDigits: d || 2 });
+
+  function card(g, opts) {
+    const learned = seen().indexOf(g.word) > -1;
+    return `
+      <div class="lesson-card ${learned ? "learned" : ""}">
+        <div class="lc-head">
+          <span class="lc-no">${g.cat}</span>
+          ${opts.today ? `<span class="today-mark">今日新学</span>` : ""}
+          <button class="lc-done ${learned ? "on" : ""}" data-word="${g.word}" type="button">${learned ? "✓ 已学" : "标记已学"}</button>
+        </div>
+        <div class="lc-word">${g.word}</div>
+        <div class="lc-py">${g.pinyin}</div>
+        <p class="lc-plain">${g.plain}</p>
+        <p class="lc-example"><span class="lc-ex-tag">真实例子</span>${g.example}</p>
+        <p class="lc-tip"><span class="lc-tip-tag">小贴士</span>${g.tip}</p>
+      </div>`;
+  }
+  function bindDone() {
+    document.querySelectorAll(".lc-done").forEach((btn) => {
+      btn.onclick = () => {
+        const w = btn.dataset.word;
+        let s = seen();
+        if (btn.classList.contains("on")) {
+          s = s.filter((x) => x !== w);
+          btn.classList.remove("on"); btn.textContent = "标记已学";
+        } else {
+          s.push(w); btn.classList.add("on"); btn.textContent = "✓ 已学";
+        }
+        localStorage.setItem("exp_learned", s.join(","));
+        $("dictCount").textContent = "(已学 " + s.length + " / " + list.length + ")";
+      };
+    });
+  }
+
+  function renderToday() {
+    $("lessonGrid").innerHTML = todayWords.map((g) => card(g, { today: true })).join("");
+    $("lessonProgress").innerHTML = "今天是第 <b>" + (dayIndex + 1) + "</b> 课 · 已解锁 " + Math.min(list.length, (dayIndex + 1) * daily) + " / " + list.length + " 个词 · 每天学 3 个,坚持 12 天入门。";
+  }
+
+  function renderAll(cat) {
+    const cats = ["全部"].concat(Array.from(new Set(list.map((g) => g.cat))));
+    $("catFilter").innerHTML = cats.map((c) => `<button class="${(cat || "全部") === c ? "on" : ""}" data-cat="${c}">${c}</button>`).join("");
+    $("catFilter").querySelectorAll("button").forEach((b) => {
+      b.onclick = () => { renderAll(b.dataset.cat); window.location.hash = "all"; };
+    });
+    const arr = cat && cat !== "全部" ? list.filter((g) => g.cat === cat) : list;
+    $("allGrid").innerHTML = arr.map((g) => card(g, { today: todaySet.has(g.word) })).join("");
+    $("dictCount").textContent = "(已学 " + seen().length + " / " + list.length + ")";
+    bindDone();
+  }
+
+  renderToday();
+  renderAll("全部");
+  bindDone();
+
+  const mb = $("menuBtn"), mm = $("mobileMenu");
+  mb.addEventListener("click", () => {
+    const open = mm.classList.toggle("open");
+    mb.classList.toggle("active", open);
+  });
+  mm.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => {
+    mm.classList.remove("open"); mb.classList.remove("active");
+  }));
+})();
+</script>
+</body>
+</html>
