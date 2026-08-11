@@ -34,7 +34,7 @@ def send(title, content, token=None):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 2:
         print("用法:")
         print("  python3 push_wechat.py \"标题\" \"正文\" [--token xxx]")
         print("  echo \"正文\" | python3 push_wechat.py \"标题\" [--token xxx]   # 正文走 stdin,避免 shell 引号问题")
@@ -42,8 +42,14 @@ if __name__ == "__main__":
     title = sys.argv[1]
     if len(sys.argv) >= 3 and sys.argv[2] != "--token":
         content = sys.argv[2]
-    else:
+    elif len(sys.argv) == 2 and not sys.stdin.isatty():
+        # 仅标题 + stdin 管道(echo/printf 方式),读正文
         content = sys.stdin.read().strip()
+    else:
+        print("用法:")
+        print("  python3 push_wechat.py \"标题\" \"正文\" [--token xxx]")
+        print("  echo \"正文\" | python3 push_wechat.py \"标题\" [--token xxx]   # 正文走 stdin,避免 shell 引号问题")
+        sys.exit(1)
     token = None
     if "--token" in sys.argv:
         token = sys.argv[sys.argv.index("--token") + 1]

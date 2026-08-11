@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="¥10000 投资实验 · 指数/ETF 专区 —— 宽基指数与行业ETF实时行情,看懂「打包买」的另一种选择">
+<title>指数/ETF 专区 — ¥10000 投资实验</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ========== ETF 专区样式 ========== */
+.etf-kicker { font-size: 12px; letter-spacing: 1px; color: var(--text-faint); font-family: var(--font-num); }
+
+.etf-banner {
+  margin-top: 30px;
+  background: linear-gradient(120deg, rgba(91,140,255,.10), rgba(47,201,140,.08));
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 22px;
+  display: flex; gap: 16px; align-items: flex-start;
+  font-size: 13.5px; color: var(--text-dim);
+}
+.etf-banner b { color: var(--text); }
+.etf-banner .ico { font-family: var(--font-num); color: var(--gold); font-weight: 800; font-size: 16px; line-height: 1.2; }
+
+/* 分组区块 */
+.etf-group { margin-top: 14px; }
+.etf-group + .etf-group { margin-top: 40px; }
+.etf-group-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.etf-group-head h2 { font-size: 21px; font-weight: 800; }
+.etf-group-head .g-tag { font-size: 11.5px; color: var(--text-dim); padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); }
+.etf-group-head .g-sub { font-size: 13px; color: var(--text-faint); }
+
+/* ETF 卡片网格 */
+.etf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.etf-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 20px; transition: border-color .18s, transform .18s;
+}
+.etf-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+.ec-head { display: flex; align-items: baseline; gap: 8px; }
+.ec-name { font-size: 15.5px; font-weight: 700; }
+.ec-code { font-family: var(--font-num); font-size: 11.5px; color: var(--text-faint); }
+.ec-brief { margin-top: 6px; font-size: 12.5px; color: var(--text-dim); line-height: 1.6; min-height: 40px; }
+.ec-row { display: flex; align-items: baseline; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+.ec-price { font-family: var(--font-num); font-size: 22px; font-weight: 700; }
+.ec-chg { font-family: var(--font-num); font-size: 13.5px; font-weight: 700; padding: 3px 10px; border-radius: 8px; }
+.ec-chg.up { color: var(--up); background: var(--up-soft); }
+.ec-chg.down { color: var(--down); background: var(--down-soft); }
+.ec-chg.flat { color: var(--text-dim); background: var(--line); }
+.ec-meta { margin-top: 10px; font-size: 12px; color: var(--text-faint); display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* 知识点卡 */
+.etf-tip {
+  margin-top: 16px; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 18px 22px;
+}
+.etf-tip .tip-title { font-size: 13.5px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+.etf-tip .tip-body { font-size: 13px; color: var(--text-dim); line-height: 1.8; }
+.etf-tip .tip-body b { color: var(--text); }
+
+@media (max-width: 900px) {
+  .etf-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .etf-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 顶栏 ============ -->
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">¥</span>
+      <span class="brand-text">指数 / ETF 专区</span>
+      <span class="brand-sub">BASKETS · WIDE & SECTOR</span>
+    </a>
+    <nav class="nav">
+      <a href="#wide">宽基指数</a>
+      <a href="#sector">行业ETF</a>
+      <a href="#learn">小白知识</a>
+      <a href="index.html" style="color:var(--gold)">← 返回实验主页</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="打开菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <span class="day-badge" id="dataBadge">REAL · 加载中</span>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#wide">宽基指数</a>
+    <a href="#sector">行业ETF</a>
+    <a href="#learn">小白知识</a>
+    <a href="index.html" class="mm-admin">返回实验主页</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" style="padding-top:40px;padding-bottom:20px">
+    <div class="wrap">
+      <p class="hero-kicker"><span class="dot"></span>打包买 · 不用选公司 · 每天和选股器一起更新</p>
+      <h1>如果不想选公司,就买「一篮子」</h1>
+      <p class="hero-sub">个股 = 一家公司;ETF = 打包一个行业甚至整个市场。这里实时跟踪宽基指数与行业 ETF 的行情,帮你理解「板块」到底是什么、现在谁强谁弱。</p>
+
+      <div class="etf-banner">
+        <span class="ico">!</span>
+        <span>
+          <b>怎么读这张表:</b> 宽基指数(上证50/沪深300/中证500…)≈ 打包整个市场,最分散、最稳;
+          行业ETF(军工/医药/半导体/白酒…)≈ 打包一个行业,赚行业景气度的钱。
+          本页行情由 <code>update_data.py</code> 每天自动更新,<b>仅供学习参考,不构成投资建议</b>。
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 宽基指数 ============ -->
+  <section class="section" id="wide" style="padding-top:20px">
+    <div class="wrap">
+      <div class="etf-group">
+        <div class="etf-group-head">
+          <h2>宽基指数</h2>
+          <span class="g-tag">打包整个市场</span>
+          <span class="g-sub">分散程度:高 —— 一篮子几百家公司,单家暴雷影响小</span>
+        </div>
+        <div class="etf-grid" id="indicesGrid"><!-- JS --></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 行业ETF ============ -->
+  <section class="section" id="sector" style="padding-top:40px">
+    <div class="wrap">
+      <div class="etf-group">
+        <div class="etf-group-head">
+          <h2>行业 ETF</h2>
+          <span class="g-tag">打包一个行业</span>
+          <span class="g-sub">分散程度:中 —— 赌一个赛道,赚行业景气的钱</span>
+        </div>
+        <div class="etf-grid" id="industryGrid"><!-- JS --></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 小白知识 ============ -->
+  <section class="section" id="learn" style="padding-top:40px">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>小白知识 · ETF 是什么?</h2>
+          <p class="section-sub">三个问题,讲明白「打包买」这件事。</p>
+        </div>
+      </div>
+
+      <div class="etf-tip">
+        <div class="tip-title">① ETF 和「买一堆股票」有什么不一样?</div>
+        <div class="tip-body">没什么本质区别 —— ETF 就是基金公司帮你把一篮子股票打包成一份,你花一份钱就同时拥有几十上百家公司。
+        比如买 1 份医药ETF,等于同时持有恒瑞医药、迈瑞医疗、药明康德……所有医药公司的组合。省心、不用研究每家。</div>
+      </div>
+
+      <div class="etf-tip">
+        <div class="tip-title">② 宽基指数和行业 ETF,选哪个?</div>
+        <div class="tip-body"><b>宽基(如沪深300)</b> 覆盖整个市场,哪个行业涨它都沾光,波动小、适合长期慢慢买;
+        <b>行业ETF(如军工ETF)</b> 只押一个行业,涨起来猛、跌起来也狠,适合你看好某个赛道时用。
+        新手阶段,宽基是更稳的起点 —— 就像我们实验的第一笔,先站住再跑。</div>
+      </div>
+
+      <div class="etf-tip">
+        <div class="tip-title">③ 为什么看 ETF 能帮我看懂个股?</div>
+        <div class="tip-body">个股的涨跌,一半看自己,一半看它所在的行业。
+        万华化学跌了,先看看化工/大盘是不是都在跌 —— 如果整个行业都弱,那是行业问题,不是万华一家的问题。
+        本页就是给你这块「放大镜」:哪天你想买的股票跌了,先来这里看它的行业 ETF 是涨是跌。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 合规声明 ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="card disclaimer">
+        <h3>重要声明</h3>
+        <p>本页所有指数与 ETF 行情数据仅用于投资学习与研究,<b>不构成针对任何个人的投资建议</b>,不构成收益承诺。行情可能有延迟或误差,过往表现不代表未来收益。股市有风险,入市需谨慎。</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <span class="brand-text">¥10000 投资实验 · 指数/ETF 专区</span>
+      <p class="footer-sub"><a href="index.html" style="color:var(--gold);text-decoration:none">← 返回实验主页</a></p>
+    </div>
+    <p class="footer-copy">© 2026 ¥10000 投资实验 · 内容不构成投资建议</p>
+  </div>
+</footer>
+
+<script src="real_data.js"></script>
+<script src="etf.js"></script>
+</body>
+</html>

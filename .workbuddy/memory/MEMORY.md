@@ -15,9 +15,8 @@
   - 推送脚本 /Users/lizhen/ai-experiment/push_wechat.py:`echo "正文" | python3 push_wechat.py "标题"`(支持 stdin/argv)
   - 接收要求:微信关注「pushplus 推送加」公众号 + 消息开关开启;实名已付费 ¥3.9 一次性
   - 勿再用 WorkBuddy 内置 push_to_wechat:工具不持久化该字段,小程序端用户不可见
-- 推送节奏(5 个自动化,prompt 内置 PushPlus 推送,均指向 /Users/lizhen/ai-experiment):
+- 推送节奏(3 个自动化,prompt 内置 PushPlus 推送,均指向 /Users/lizhen/ai-experiment):
   - 09:30 每日投资学堂提醒(automation-1786416869287,每天,今日 3 词白话+例子)
-  - 09:35 盘中快报(automation-1786416869301,工作日)
-  - 11:35 盘中快报(automation-1786416869312,工作日)
   - 14:00 盘中快报(automation-1786416869322,工作日)
   - 15:35 每日更新+部署+收盘日报(automation-1785918218488,每天)
+  - (曾建 09:35/11:35 盘中快报,用户 2026-08-11 要求精简为上述 3 点,已删除)

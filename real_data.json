@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-11 11:37:23",
+    "generated_at": "2026-08-11 14:14:50",
     "data_mode": "real",
     "source": "eastmoney",
     "pool_size": 10,
@@ -9,57 +9,185 @@
   "benchmark": {
     "name": "沪深300",
     "code": "000300",
-    "price": 4709.1,
-    "change_pct": 0.15,
+    "price": 4683.94,
+    "change_pct": -0.38,
     "tech": {
-      "close": 4709.1,
-      "ma20": 4650.78,
-      "ma60": 4793.87,
-      "rsi14": 49.3,
-      "mom20": -1.82,
-      "vol20": 25.18,
+      "close": 4683.84,
+      "ma20": 4649.51,
+      "ma60": 4793.45,
+      "rsi14": 47.4,
+      "mom20": -2.35,
+      "vol20": 25.19,
       "max_dd60": -10.49,
-      "ma20_slope": -4.72
+      "ma20_slope": -4.75
     }
   },
   "macro": [
     {
       "key": "hf_CL",
       "name": "纽约原油",
-      "value": 82.14,
-      "change_pct": 0.01
+      "value": 82.52,
+      "change_pct": 0.47
     },
     {
       "key": "hf_OIL",
       "name": "布伦特原油",
-      "value": 87.68,
-      "change_pct": -0.05
+      "value": 88.05,
+      "change_pct": 0.37
     },
     {
       "key": "hf_GC",
       "name": "纽约黄金",
-      "value": 4481.14,
-      "change_pct": 1.39
+      "value": 4434.39,
+      "change_pct": 0.33
     },
     {
       "key": "DINIW",
       "name": "美元指数",
-      "value": 99.78,
+      "value": 99.81,
       "change_pct": null
     },
     {
       "key": "USDCNY",
       "name": "美元人民币",
-      "value": 6.7435,
+      "value": 6.7451,
       "change_pct": null
     },
     {
       "key": "HSI",
       "name": "恒生指数",
-      "value": 25785.71,
-      "change_pct": -0.59
+      "value": 25721.34,
+      "change_pct": -0.83
     }
   ],
+  "etf": {
+    "indices": [
+      {
+        "name": "上证50",
+        "code": "000016",
+        "secid": "1.000016",
+        "brief": "沪市最大的 50 家巨头,最稳的一篮子",
+        "price": 2940.66,
+        "change_pct": -0.91,
+        "pe_ttm": 11.53,
+        "pb": 0.0,
+        "market_cap": 23498955000000.0
+      },
+      {
+        "name": "沪深300",
+        "code": "000300",
+        "secid": "1.000300",
+        "brief": "沪深两市最大的 300 家,最常被定投",
+        "price": 4683.84,
+        "change_pct": -0.39,
+        "pe_ttm": 14.41,
+        "pb": 0.0,
+        "market_cap": 55505071000000.0
+      },
+      {
+        "name": "中证500",
+        "code": "000905",
+        "secid": "1.000905",
+        "brief": "排名 301~800 的中坚公司,弹性更大",
+        "price": 8013.41,
+        "change_pct": -0.22,
+        "pe_ttm": 37.07,
+        "pb": 0.0,
+        "market_cap": 17704776000000.0
+      },
+      {
+        "name": "创业板指",
+        "code": "399006",
+        "secid": "0.399006",
+        "brief": "成长型公司,涨跌波动较大",
+        "price": 3569.67,
+        "change_pct": 0.92,
+        "pe_ttm": 61.6,
+        "pb": 0.0,
+        "market_cap": 18953197000000.0
+      },
+      {
+        "name": "科创50",
+        "code": "000688",
+        "secid": "1.000688",
+        "brief": "科创板科技 50 家,偏硬科技",
+        "price": 1726.24,
+        "change_pct": -0.66,
+        "pe_ttm": 188.52,
+        "pb": 0.0,
+        "market_cap": 5949795000000.0
+      }
+    ],
+    "industry": [
+      {
+        "name": "军工ETF",
+        "code": "512660",
+        "secid": "1.512660",
+        "brief": "国防军工一篮子:航空/航天/船舶",
+        "price": 1.154,
+        "change_pct": -1.54,
+        "pe_ttm": null,
+        "pb": 0.0,
+        "market_cap": 6698999999.999999
+      },
+      {
+        "name": "医药ETF",
+        "code": "512010",
+        "secid": "1.512010",
+        "brief": "医药生物一篮子:制药/器械/服务",
+        "price": 0.406,
+        "change_pct": 0.25,
+        "pe_ttm": null,
+        "pb": 0.0,
+        "market_cap": 16987000000.0
+      },
+      {
+        "name": "半导体ETF",
+        "code": "512480",
+        "secid": "1.512480",
+        "brief": "芯片半导体一篮子",
+        "price": 1.078,
+        "change_pct": -0.28,
+        "pe_ttm": null,
+        "pb": 0.0,
+        "market_cap": 20329000000.0
+      },
+      {
+        "name": "白酒ETF",
+        "code": "512690",
+        "secid": "1.512690",
+        "brief": "白酒板块一篮子",
+        "price": 0.441,
+        "change_pct": -0.9,
+        "pe_ttm": null,
+        "pb": 0.0,
+        "market_cap": 14688999999.999998
+      },
+      {
+        "name": "新能源ETF",
+        "code": "516160",
+        "secid": "1.516160",
+        "brief": "新能源产业链一篮子",
+        "price": 2.581,
+        "change_pct": 0.19,
+        "pe_ttm": null,
+        "pb": 0.0,
+        "market_cap": 4058000000.0
+      },
+      {
+        "name": "证券ETF",
+        "code": "512880",
+        "secid": "1.512880",
+        "brief": "券商板块一篮子,牛市放大器",
+        "price": 1.096,
+        "change_pct": -0.27,
+        "pe_ttm": null,
+        "pb": 0.0,
+        "market_cap": 63608000000.00001
+      }
+    ],
+    "errors": []
+  },
   "pool": [
     {
       "name": "万华化学",
@@ -68,27 +196,47 @@
       "industry": "化工",
       "brief": "MDI 全球龙头,新材料打开空间",
       "quote": {
-        "price": 77.49,
+        "price": 76.18,
         "prev_close": 78.01,
         "high": 79.0,
-        "low": 77.05,
+        "low": 76.02,
         "open": 78.04,
-        "change_pct": -0.67,
-        "volume": 204883.0,
-        "amount": 1597310000.0,
-        "turnover_rate": 0.65,
-        "pe_ttm": 18.43,
-        "pe_dynamic": 16.31,
-        "pe_static": 19.36,
-        "volume_ratio": 1.12,
-        "market_cap": 242580000000.00003,
-        "float_cap": 242580000000.00003,
+        "change_pct": -2.35,
+        "volume": 312036.0,
+        "amount": 2416600000.0,
+        "turnover_rate": 1.0,
+        "pe_ttm": 18.12,
+        "pe_dynamic": 16.04,
+        "pe_static": 19.04,
+        "volume_ratio": 1.06,
+        "market_cap": 238479000000.0,
+        "float_cap": 238479000000.0,
         "high52": 85.81,
         "low52": 70.21,
-        "pb": 2.26
+        "pb": 2.22
       },
-      "tech": {},
-      "finance": {},
+      "tech": {
+        "close": 76.19,
+        "ma20": 73.88,
+        "ma60": 72.66,
+        "rsi14": 56.5,
+        "mom20": 9.47,
+        "vol20": 31.3,
+        "max_dd60": -14.44,
+        "ma20_slope": 4.82
+      },
+      "finance": {
+        "report_date": "2026-03-31",
+        "report_name": "2026一季报",
+        "roe": 3.38,
+        "roe_annual": 13.52,
+        "gross_margin": 14.73,
+        "rev_yoy": 25.504673217753,
+        "profit_yoy": 20.623880961541,
+        "eps": 1.19,
+        "cfps": 2.19037832317,
+        "net_margin": 14.7280439014
+      },
       "news": [
         {
           "date": "2026-08-06",
@@ -174,7 +322,43 @@
           "title": "万华化学:万华化学2026年半年度业绩预增公告"
         }
       ],
-      "research": [],
+      "research": [
+        {
+          "date": "2026-07-07",
+          "org": "国信证券",
+          "rating": "优于大市",
+          "target": null,
+          "title": "聚氨酯、石化板块景气回升，1H26归母净利润98-104亿元"
+        },
+        {
+          "date": "2026-04-23",
+          "org": "中邮证券",
+          "rating": "买入",
+          "target": null,
+          "title": "产销保持高增长，一季度归母净利增长超20%"
+        },
+        {
+          "date": "2026-04-23",
+          "org": "中银证券",
+          "rating": "买入",
+          "target": null,
+          "title": "龙头穿越周期低谷，新材料板块加速放量"
+        },
+        {
+          "date": "2026-04-23",
+          "org": "开源证券",
+          "rating": "买入(Buy)",
+          "target": null,
+          "title": "公司信息更新报告：至暗时刻已过，看好聚氨酯巨头稳定供应全球"
+        },
+        {
+          "date": "2026-04-21",
+          "org": "国信证券",
+          "rating": "优于大市",
+          "target": null,
+          "title": "第一季度归母净利润同比增长20.6%，看好聚氨酯景气回升"
+        }
+      ],
       "sentiment": {
         "sentiment": 4.0,
         "score": 70.0,
@@ -182,16 +366,16 @@
         "pos": 1,
         "neg": 0
       },
-      "pos52": 0.467,
+      "pos52": 0.383,
       "dims": [
-        73.9,
+        72.5,
         68.2,
         84.7,
         87.9,
-        77.7,
+        76.2,
         70.0
       ],
-      "total": 76.7,
+      "total": 76.2,
       "grade": "B",
       "action": "关注",
       "rank": 1
@@ -203,28 +387,55 @@
       "industry": "动力电池",
       "brief": "全球动力电池龙头,储能第二曲线",
       "quote": {
-        "price": 394.04,
+        "price": 392.7,
         "prev_close": 393.87,
         "high": 395.28,
         "low": 389.52,
         "open": 395.0,
-        "change_pct": 0.04,
-        "volume": 93210,
-        "amount": 3664995523.92,
-        "turnover_rate": 0.22,
-        "pe_dynamic": 21.06,
-        "pe_ttm": 25.25,
-        "pe_static": 4.89,
+        "change_pct": -0.3,
+        "volume": 130190,
+        "amount": 5113746029.03,
+        "turnover_rate": 0.31,
+        "pe_dynamic": 20.99,
+        "pe_ttm": 25.16,
+        "pe_static": 4.87,
         "bps": 81.9931544,
-        "market_cap": 1823087104282.76,
-        "float_cap": 1678642324726.76,
+        "market_cap": 1816887386691.3,
+        "float_cap": 1672933816161.3,
         "high52": 467.35,
         "low52": 248.41,
-        "pb": 4.805767053157794
+        "pb": 4.789424225396066
       },
-      "tech": {},
-      "finance": {},
+      "tech": {
+        "close": 392.7,
+        "ma20": 385.81,
+        "ma60": 391.4,
+        "rsi14": 61.2,
+        "mom20": 8.3,
+        "vol20": 38.77,
+        "max_dd60": -19.68,
+        "ma20_slope": 1.09
+      },
+      "finance": {
+        "report_date": "2026-06-30",
+        "report_name": "2026中报",
+        "roe": 12.08,
+        "roe_annual": 24.16,
+        "gross_margin": 23.93,
+        "rev_yoy": 54.800369148545,
+        "profit_yoy": 41.983941749454,
+        "eps": 9.51,
+        "cfps": 13.015213596184,
+        "net_margin": 23.9283938867
+      },
       "news": [
+        {
+          "date": "2026-08-11",
+          "title": "宁德时代旗下宁家服务全球十大站点同步开业",
+          "content": "上证报中国证券网讯（记者俞立严）8月10日，宁德时代旗下独立后市场品牌宁家服务在海口直营体验中心开启2026年度品牌日。活动以“NexttoNew向新”为主题，围绕技术、服务、生态全面升级，进一步兑现“您身边的新能源服务专家”的品牌承诺。",
+          "media": "上海证券报·中国证券网",
+          "url": "http://finance.eastmoney.com/a/202608113837759735.html"
+        },
         {
           "date": "2026-08-10",
           "title": "宁德时代重要锂矿复产有新进展",
@@ -273,13 +484,6 @@
           "content": "新京报贝壳财经讯（记者林子）8月10日，宁德时代后市场品牌宁家服务开启2026年度品牌日，活动当日，宁家服务全球十大站点同步开业，涵盖海口、杭州、淄博、沈阳、广州、遂宁、宁波、香港以及海外的土耳其伊斯坦布尔、挪威奥斯陆。",
           "media": "新京报",
           "url": "http://finance.eastmoney.com/a/202608103836967921.html"
-        },
-        {
-          "date": "2026-08-10",
-          "title": "宁德时代与连云港公交签署五年战略合作协议",
-          "content": "据宁德时代8月10日消息，近日，宁德时代与连云港交控下属公交集团签署五年期战略合作框架协议。双方将围绕车辆后市场服务与城市换电网络领域深化合作，助力城市交通低碳发展。",
-          "media": "界面新闻",
-          "url": "http://finance.eastmoney.com/a/202608103836722264.html"
         }
       ],
       "announcements": [
@@ -309,24 +513,60 @@
           "title": "宁德时代:2026年7月24日投资者关系活动记录表"
         }
       ],
-      "research": [],
+      "research": [
+        {
+          "date": "2026-07-31",
+          "org": "国信证券",
+          "rating": "优于大市",
+          "target": null,
+          "title": "业绩维持快速增长，回购彰显发展信心"
+        },
+        {
+          "date": "2026-07-29",
+          "org": "山西证券",
+          "rating": "买入",
+          "target": null,
+          "title": "中报业绩符合预期，拟推出200-400亿元回购计划"
+        },
+        {
+          "date": "2026-07-28",
+          "org": "西南证券",
+          "rating": "买入",
+          "target": null,
+          "title": "2026年半年报点评：回购股份夯实信心，业绩持续增长，符合预期"
+        },
+        {
+          "date": "2026-07-28",
+          "org": "交银国际证券",
+          "rating": "买入",
+          "target": null,
+          "title": "2季度出货超预期，关注盈利修复节奏及供需变化；维持买入"
+        },
+        {
+          "date": "2026-07-27",
+          "org": "群益证券",
+          "rating": "买进(Buy)",
+          "target": null,
+          "title": "公司半年报业绩快速增长，拟回购A股股份，建议“买进”"
+        }
+      ],
       "sentiment": {
-        "sentiment": 2.49,
-        "score": 62.5,
+        "sentiment": 2.0,
+        "score": 60.0,
         "tag": "利好",
-        "pos": 4,
+        "pos": 3,
         "neg": 0
       },
-      "pos52": 0.665,
+      "pos52": 0.659,
       "dims": [
         68.7,
         79.1,
         92.0,
         77.2,
         70.0,
-        62.5
+        60.0
       ],
-      "total": 75.9,
+      "total": 75.7,
       "grade": "B",
       "action": "关注",
       "rank": 2
@@ -338,27 +578,47 @@
       "industry": "家电",
       "brief": "白电龙头,机器人与工业自动化",
       "quote": {
-        "price": 85.45,
+        "price": 85.62,
         "prev_close": 85.3,
         "high": 86.12,
         "low": 85.03,
         "open": 85.26,
-        "change_pct": 0.18,
-        "volume": 105501,
-        "amount": 904026259.04,
-        "turnover_rate": 0.15,
-        "pe_dynamic": 12.86,
-        "pe_ttm": 14.83,
+        "change_pct": 0.38,
+        "volume": 151934,
+        "amount": 1302071466.07,
+        "turnover_rate": 0.22,
+        "pe_dynamic": 12.88,
+        "pe_ttm": 14.86,
         "pe_static": 3.16,
         "bps": 30.5536332,
-        "market_cap": 651848020050.4,
-        "float_cap": 588278049086.25,
+        "market_cap": 653144850517.4401,
+        "float_cap": 589448409160.5,
         "high52": 89.5,
         "low52": 66.81,
-        "pb": 2.796721405950504
+        "pb": 2.8022853923637467
       },
-      "tech": {},
-      "finance": {},
+      "tech": {
+        "close": 85.62,
+        "ma20": 84.96,
+        "ma60": 79.93,
+        "rsi14": 53.0,
+        "mom20": 5.47,
+        "vol20": 21.79,
+        "max_dd60": -18.18,
+        "ma20_slope": 10.47
+      },
+      "finance": {
+        "report_date": "2026-03-31",
+        "report_name": "2026一季报",
+        "roe": 5.56,
+        "roe_annual": 22.24,
+        "gross_margin": 25.48,
+        "rev_yoy": 2.454635021947,
+        "profit_yoy": 2.031220956812,
+        "eps": 1.69,
+        "cfps": 1.91090853469,
+        "net_margin": 25.5711317621
+      },
       "news": [
         {
           "date": "2026-08-05",
@@ -444,7 +704,43 @@
           "title": "美的集团:关于自主行权模式下第九期股权激励计划第三个行权期符合行权条件开始行权的提示性公告"
         }
       ],
-      "research": [],
+      "research": [
+        {
+          "date": "2026-07-31",
+          "org": "开源证券",
+          "rating": "买入(Buy)",
+          "target": null,
+          "title": "公司深度报告：美的空调欧洲出圈，拆解美的欧洲OBM业务进阶之路"
+        },
+        {
+          "date": "2026-05-12",
+          "org": "交银国际证券",
+          "rating": "买入",
+          "target": null,
+          "title": "稳步推进ToB业务与全球化，迈向技术驱动的全球工业科技集团"
+        },
+        {
+          "date": "2026-05-07",
+          "org": "开源证券",
+          "rating": "买入(Buy)",
+          "target": null,
+          "title": "公司信息更新报告：高基数下增长凸显龙头韧性，全额注销回购提高股息"
+        },
+        {
+          "date": "2026-05-06",
+          "org": "交银国际证券",
+          "rating": "买入",
+          "target": null,
+          "title": "1Q26业绩符合预期，全年稳健增长可期；维持买入"
+        },
+        {
+          "date": "2026-05-05",
+          "org": "太平洋",
+          "rating": "买入",
+          "target": null,
+          "title": "美的集团：2026Q1收入业绩增速回正，楼宇和机器人业务双位数增长"
+        }
+      ],
       "sentiment": {
         "sentiment": 2.13,
         "score": 60.6,
@@ -452,9 +748,9 @@
         "pos": 7,
         "neg": 1
       },
-      "pos52": 0.822,
+      "pos52": 0.829,
       "dims": [
-        84.4,
+        84.6,
         79.7,
         44.8,
         82.5,
@@ -473,27 +769,47 @@
       "industry": "白酒",
       "brief": "超高端白酒龙头,品牌稀缺性强",
       "quote": {
-        "price": 1346.48,
+        "price": 1340.65,
         "prev_close": 1348.86,
         "high": 1352.65,
-        "low": 1338.18,
+        "low": 1338.0,
         "open": 1348.0,
-        "change_pct": -0.18,
-        "volume": 15139.0,
-        "amount": 2036500000.0,
-        "turnover_rate": 0.12,
-        "pe_ttm": 20.35,
-        "pe_dynamic": 15.45,
-        "pe_static": 20.45,
-        "volume_ratio": 0.78,
-        "market_cap": 1683209999999.9998,
-        "float_cap": 1683209999999.9998,
+        "change_pct": -0.61,
+        "volume": 20034.0,
+        "amount": 2693190000.0,
+        "turnover_rate": 0.16,
+        "pe_ttm": 20.26,
+        "pe_dynamic": 15.38,
+        "pe_static": 20.36,
+        "volume_ratio": 0.64,
+        "market_cap": 1675922000000.0,
+        "float_cap": 1675922000000.0,
         "high52": 1483.75,
         "low52": 1213.97,
-        "pb": 7.23
+        "pb": 7.2
       },
-      "tech": {},
-      "finance": {},
+      "tech": {
+        "close": 1340.83,
+        "ma20": 1311.85,
+        "ma60": 1256.73,
+        "rsi14": 58.1,
+        "mom20": 10.37,
+        "vol20": 31.93,
+        "max_dd60": -14.18,
+        "ma20_slope": 9.57
+      },
+      "finance": {
+        "report_date": "2026-03-31",
+        "report_name": "2026一季报",
+        "roe": 10.57,
+        "roe_annual": 42.28,
+        "gross_margin": 88.46,
+        "rev_yoy": 6.336009277123,
+        "profit_yoy": 1.471418294983,
+        "eps": 21.76,
+        "cfps": 21.488885503142,
+        "net_margin": 89.7592176242
+      },
       "news": [
         {
           "date": "2026-08-10",
@@ -579,7 +895,43 @@
           "title": "贵州茅台:贵州茅台第五届董事会2026年度第一次会议决议公告"
         }
       ],
-      "research": [],
+      "research": [
+        {
+          "date": "2026-07-23",
+          "org": "中邮证券",
+          "rating": "买入",
+          "target": null,
+          "title": "需求根基稳固，市场化定价持续兑现"
+        },
+        {
+          "date": "2026-07-20",
+          "org": "群益证券",
+          "rating": "区间操作(Tranding Buy)",
+          "target": null,
+          "title": "飞天茅台年内二次提价，进一步落实市场化机制"
+        },
+        {
+          "date": "2026-05-25",
+          "org": "诚通证券",
+          "rating": "强烈推荐",
+          "target": null,
+          "title": "2025年年报及2026年一季报点评：顺势出清舒缓压力巩固优势稳健前行"
+        },
+        {
+          "date": "2026-05-05",
+          "org": "华鑫证券",
+          "rating": "买入",
+          "target": null,
+          "title": "公司事件点评报告：i茅台持续发力，改革效果初显"
+        },
+        {
+          "date": "2026-04-29",
+          "org": "万联证券",
+          "rating": "增持",
+          "target": null,
+          "title": "点评报告：业绩稳健增长，直销收入首次超越代理渠道"
+        }
+      ],
       "sentiment": {
         "sentiment": 1.1,
         "score": 55.5,
@@ -587,16 +939,16 @@
         "pos": 3,
         "neg": 2
       },
-      "pos52": 0.491,
+      "pos52": 0.47,
       "dims": [
-        67.1,
+        65.5,
         90.8,
         50.1,
         87.9,
-        75.8,
+        75.5,
         55.5
       ],
-      "total": 72.2,
+      "total": 71.8,
       "grade": "C",
       "action": "观察",
       "rank": 4
@@ -608,27 +960,47 @@
       "industry": "医药",
       "brief": "创新药龙头,管线进入收获期",
       "quote": {
-        "price": 55.7,
+        "price": 55.07,
         "prev_close": 54.18,
         "high": 55.8,
         "low": 53.76,
         "open": 53.79,
-        "change_pct": 2.81,
-        "volume": 830417,
-        "amount": 4576753933.0,
-        "turnover_rate": 1.3,
-        "pe_dynamic": 40.5,
-        "pe_ttm": 47.94,
-        "pe_static": 5.93,
-        "bps": 9.5863113,
-        "market_cap": 369692032981.80005,
-        "float_cap": 355310426661.8,
-        "high52": 73.84,
-        "low52": 45.26,
-        "pb": 5.810368373912498
+        "change_pct": 1.64,
+        "volume": 1040531.0,
+        "amount": 5738910000.0,
+        "turnover_rate": 1.63,
+        "pe_ttm": 45.02,
+        "pe_dynamic": 40.04,
+        "pe_static": 47.4,
+        "volume_ratio": 1.31,
+        "market_cap": 365511000000.0,
+        "float_cap": 351292000000.0,
+        "high52": 59.6,
+        "low52": 48.76,
+        "pb": 5.86
       },
-      "tech": {},
-      "finance": {},
+      "tech": {
+        "close": 55.08,
+        "ma20": 54.32,
+        "ma60": 51.71,
+        "rsi14": 48.6,
+        "mom20": 0.47,
+        "vol20": 41.33,
+        "max_dd60": -20.1,
+        "ma20_slope": 3.98
+      },
+      "finance": {
+        "report_date": "2026-03-31",
+        "report_name": "2026一季报",
+        "roe": 4.15,
+        "roe_annual": 16.6,
+        "gross_margin": 86.6,
+        "rev_yoy": 12.975362979304,
+        "profit_yoy": 21.782316948345,
+        "eps": 0.34,
+        "cfps": 0.118490615868,
+        "net_margin": 86.5986071559
+      },
       "news": [
         {
           "date": "2026-08-10",
@@ -714,7 +1086,43 @@
           "title": "恒瑞医药:H股公告-翌日披露报表"
         }
       ],
-      "research": [],
+      "research": [
+        {
+          "date": "2026-07-19",
+          "org": "国金证券",
+          "rating": "买入",
+          "target": null,
+          "title": "蓝海市场开花，眼科领域步入收获期"
+        },
+        {
+          "date": "2026-07-01",
+          "org": "西南证券",
+          "rating": "买入",
+          "target": null,
+          "title": "研发能力再得验证，创新成果加速落地"
+        },
+        {
+          "date": "2026-05-07",
+          "org": "中邮证券",
+          "rating": "买入",
+          "target": null,
+          "title": "BD收入稳健，26年创新药指引收入增速30%+"
+        },
+        {
+          "date": "2026-05-06",
+          "org": "东吴证券",
+          "rating": "买入",
+          "target": null,
+          "title": "2026年一季报点评：进入创新药主导的高质量发展阶段，国际化稳步推进"
+        },
+        {
+          "date": "2026-04-23",
+          "org": "国金证券",
+          "rating": "买入",
+          "target": null,
+          "title": "业绩稳健增长，研发成果密集兑现"
+        }
+      ],
       "sentiment": {
         "sentiment": 1.84,
         "score": 59.2,
@@ -722,16 +1130,16 @@
         "pos": 4,
         "neg": 0
       },
-      "pos52": 0.365,
+      "pos52": 0.582,
       "dims": [
-        57.6,
+        56.5,
         80.1,
         74.6,
         82.5,
-        67.8,
+        68.3,
         59.2
       ],
-      "total": 70.7,
+      "total": 70.5,
       "grade": "C",
       "action": "观察",
       "rank": 5
@@ -743,27 +1151,47 @@
       "industry": "银行",
       "brief": "零售银行龙头,财富管理优势",
       "quote": {
-        "price": 38.85,
+        "price": 38.87,
         "prev_close": 38.91,
         "high": 39.2,
-        "low": 38.8,
+        "low": 38.77,
         "open": 39.0,
-        "change_pct": -0.15,
-        "volume": 283165.0,
-        "amount": 1103970000.0,
-        "turnover_rate": 0.14,
-        "pe_ttm": 6.5,
+        "change_pct": -0.1,
+        "volume": 392021,
+        "amount": 1526636725.0,
+        "turnover_rate": 0.19,
         "pe_dynamic": 6.47,
-        "pe_static": 6.52,
-        "volume_ratio": 0.65,
-        "market_cap": 979791000000.0,
-        "float_cap": 801434000000.0,
-        "high52": 42.8,
-        "low52": 35.02,
-        "pb": 0.89
+        "pe_ttm": 6.53,
+        "pe_static": 0.89,
+        "bps": 44.8995242,
+        "market_cap": 980295398510.87,
+        "float_cap": 801847069955.23,
+        "high52": 42.61,
+        "low52": 34.28,
+        "pb": 0.865710732854492
       },
-      "tech": {},
-      "finance": {},
+      "tech": {
+        "close": 38.87,
+        "ma20": 38.99,
+        "ma60": 37.4,
+        "rsi14": 51.4,
+        "mom20": 4.55,
+        "vol20": 23.69,
+        "max_dd60": -14.93,
+        "ma20_slope": 7.64
+      },
+      "finance": {
+        "report_date": "2026-03-31",
+        "report_name": "2026一季报",
+        "roe": 3.37,
+        "roe_annual": 13.48,
+        "gross_margin": null,
+        "rev_yoy": 3.807715728767,
+        "profit_yoy": 1.517996030682,
+        "eps": 1.49,
+        "cfps": 4.990047581285,
+        "net_margin": null
+      },
       "news": [
         {
           "date": "2026-08-07",
@@ -849,7 +1277,43 @@
           "title": "招商银行:招商银行内幕信息及知情人管理制度(2026年修订)"
         }
       ],
-      "research": [],
+      "research": [
+        {
+          "date": "2026-05-05",
+          "org": "东海证券",
+          "rating": "买入",
+          "target": null,
+          "title": "公司简评报告：息差下行趋缓，出清弹性渐显"
+        },
+        {
+          "date": "2026-04-30",
+          "org": "万联证券",
+          "rating": "增持",
+          "target": null,
+          "title": "点评报告：营收增速改善"
+        },
+        {
+          "date": "2026-04-29",
+          "org": "国信证券",
+          "rating": "优于大市",
+          "target": null,
+          "title": "2026年一季报点评：客群优势深化，财富管理亮眼"
+        },
+        {
+          "date": "2026-04-15",
+          "org": "太平洋",
+          "rating": "买入",
+          "target": null,
+          "title": "招商银行2025年年报点评：息差单季回升，资产质量平稳"
+        },
+        {
+          "date": "2026-04-08",
+          "org": "东海证券",
+          "rating": "增持",
+          "target": null,
+          "title": "公司简评报告：息差压力缓解，财富管理修复延续"
+        }
+      ],
       "sentiment": {
         "sentiment": -3.0,
         "score": 35.0,
@@ -857,16 +1321,16 @@
         "pos": 0,
         "neg": 1
       },
-      "pos52": 0.492,
+      "pos52": 0.551,
       "dims": [
-        85.5,
+        86.8,
         80.9,
         46.3,
         54.5,
         83.8,
         35.0
       ],
-      "total": 67.8,
+      "total": 68.1,
       "grade": "C",
       "action": "观察",
       "rank": 6
@@ -878,27 +1342,47 @@
       "industry": "保险",
       "brief": "综合金融集团,医疗养老生态",
       "quote": {
-        "price": 52.68,
+        "price": 52.58,
         "prev_close": 53.32,
         "high": 53.44,
         "low": 52.5,
         "open": 53.3,
-        "change_pct": -1.2,
-        "volume": 421865.0,
-        "amount": 2229620000.0,
-        "turnover_rate": 0.4,
-        "pe_ttm": 7.18,
-        "pe_dynamic": 9.53,
-        "pe_static": 7.08,
-        "volume_ratio": 1.24,
-        "market_cap": 953911000000.0,
-        "float_cap": 561572000000.0,
-        "high52": 58.65,
-        "low52": 47.99,
-        "pb": 0.97
+        "change_pct": -1.39,
+        "volume": 541408,
+        "amount": 2858694883.0,
+        "turnover_rate": 0.51,
+        "pe_dynamic": 9.51,
+        "pe_ttm": 7.06,
+        "pe_static": 0.97,
+        "bps": 56.2353656,
+        "market_cap": 952099816097.1,
+        "float_cap": 560506222064.14,
+        "high52": 73.13,
+        "low52": 46.9,
+        "pb": 0.9349988114952346
       },
-      "tech": {},
-      "finance": {},
+      "tech": {
+        "close": 52.57,
+        "ma20": 53.48,
+        "ma60": 51.82,
+        "rsi14": 41.7,
+        "mom20": 5.99,
+        "vol20": 28.79,
+        "max_dd60": -15.36,
+        "ma20_slope": 7.6
+      },
+      "finance": {
+        "report_date": "2026-03-31",
+        "report_name": "2026一季报",
+        "roe": 2.5,
+        "roe_annual": 10.0,
+        "gross_margin": null,
+        "rev_yoy": -6.183822234441,
+        "profit_yoy": -7.380811371039,
+        "eps": 1.43,
+        "cfps": 7.237905897946,
+        "net_margin": null
+      },
       "news": [
         {
           "date": "2026-08-04",
@@ -984,7 +1468,43 @@
           "title": "中国平安:中国平安H股公告(证券变动月报表)"
         }
       ],
-      "research": [],
+      "research": [
+        {
+          "date": "2026-07-22",
+          "org": "招银国际",
+          "rating": "BUY",
+          "target": null,
+          "title": "1H26 preview: 2Q OPAT strength persists while NBV takes a breather"
+        },
+        {
+          "date": "2026-04-29",
+          "org": "国信证券",
+          "rating": "优于大市",
+          "target": null,
+          "title": "NBV高增，综合金融助力"
+        },
+        {
+          "date": "2026-04-29",
+          "org": "开源证券",
+          "rating": "买入(Buy)",
+          "target": null,
+          "title": "中国平安2026年一季报点评：股市波动拖累业绩，NBV实现较好增长"
+        },
+        {
+          "date": "2026-04-29",
+          "org": "国金证券",
+          "rating": "买入",
+          "target": null,
+          "title": "投资拖累利润表现，NBV高速增长"
+        },
+        {
+          "date": "2026-04-29",
+          "org": "招银国际",
+          "rating": "BUY",
+          "target": null,
+          "title": "1Q OPAT a slight beat; positive outlook for full-year NBV and life OPAT acceleration"
+        }
+      ],
       "sentiment": {
         "sentiment": 1.9,
         "score": 59.5,
@@ -992,154 +1512,19 @@
         "pos": 3,
         "neg": 1
       },
-      "pos52": 0.44,
+      "pos52": 0.217,
       "dims": [
-        84.3,
+        80.0,
         75.7,
         33.2,
         50.0,
-        78.8,
+        78.7,
         59.5
       ],
-      "total": 65.2,
+      "total": 64.2,
       "grade": "C",
       "action": "观察",
       "rank": 7
-    },
-    {
-      "name": "隆基绿能",
-      "code": "601012",
-      "secid": "1.601012",
-      "industry": "光伏",
-      "brief": "光伏组件龙头,行业产能过剩承压",
-      "quote": {
-        "price": 12.91,
-        "prev_close": 12.94,
-        "high": 12.99,
-        "low": 12.82,
-        "open": 12.94,
-        "change_pct": -0.23,
-        "volume": 435466.0,
-        "amount": 562000000.0,
-        "turnover_rate": 0.57,
-        "pe_ttm": -14.16,
-        "pe_dynamic": -12.74,
-        "pe_static": -15.24,
-        "volume_ratio": 0.78,
-        "market_cap": 97833000000.0,
-        "float_cap": 97833000000.0,
-        "high52": 14.23,
-        "low52": 11.65,
-        "pb": 1.94
-      },
-      "tech": {},
-      "finance": {},
-      "news": [
-        {
-          "date": "2026-08-07",
-          "title": "隆基绿能：将为Innovo Renewables 71MWp项目供应BC组件",
-          "content": "人民财讯8月7日电，8月7日，隆基绿能宣布将为Innovo Renewables S.p.A.（简称“Innovo Renewables”）在意大利开发建设的71MWp集中式光伏项目供应Hi-MO 9高效BC组件。",
-          "media": "证券时报网",
-          "url": "http://finance.eastmoney.com/a/202608073835183220.html"
-        },
-        {
-          "date": "2026-08-07",
-          "title": "隆基绿能：将为Innovo Renewables意大利71MWp项目供应BC组件",
-          "content": "8月7日，隆基绿能宣布将为Innovo Renewables S.p.A.在意大利开发建设的71MWp集中式光伏项目供应Hi-MO 9高效BC组件。",
-          "media": "第一财经",
-          "url": "http://finance.eastmoney.com/a/202608073835183837.html"
-        },
-        {
-          "date": "2026-08-04",
-          "title": "隆基绿能：公司无逾期担保",
-          "content": "8月4日，隆基绿能发布公告称，公司未对控股股东和实际控制人及其关联人提供担保，亦无逾期担保。",
-          "media": "证券日报",
-          "url": "http://finance.eastmoney.com/a/202608043831498746.html"
-        },
-        {
-          "date": "2026-07-31",
-          "title": "隆基绿能：公司HPBC组件功率在650W以上",
-          "content": "证券日报网7月31日讯 ，隆基绿能在接受调研时表示，根据近期发布的光伏组件效率新国标，BC光伏组件的最低效率要求为23.5%，对应组件功率约635W（按照组件尺寸2382mm×1134mm测算）。",
-          "media": "证券日报",
-          "url": "http://finance.eastmoney.com/a/202607313828631931.html"
-        },
-        {
-          "date": "2026-07-31",
-          "title": "隆基绿能：公司ACM技术采用纳米合金材料制成",
-          "content": "证券日报网7月31日讯 ，隆基绿能在接受调研时表示，公司ACM（纳米合金矩阵式接触）技术采用纳米合金材料制成，结合了多种金属的优异特性。围绕ACM技术，公司已搭建起涵盖核心材料、工艺制程与设备适配的全链条知识产权体系，构筑了坚实的技术护城河。",
-          "media": "证券日报",
-          "url": "http://finance.eastmoney.com/a/202607313828633861.html"
-        },
-        {
-          "date": "2026-07-31",
-          "title": "隆基绿能：钙钛矿电池技术仍属于公司的研发储备技术",
-          "content": "证券日报网7月31日讯 ，隆基绿能在接受调研时表示，钙钛矿电池技术是未来超高效太阳能电池的重要技术路线，公司对此保持持续研究，多次刷新了晶硅-钙钛矿叠层电池效率世界纪录，为钙钛矿电池技术从实验室走向产业化应用夯实基础。现阶段，钙钛矿电池技术仍属于公司的研发储备技术。",
-          "media": "证券日报",
-          "url": "http://finance.eastmoney.com/a/202607313828633030.html"
-        },
-        {
-          "date": "2026-07-31",
-          "title": "隆基绿能：公司在2026年4月初推出了LONGi ONE储能产品矩阵",
-          "content": "证券日报网7月31日讯 ，隆基绿能在接受调研时表示，公司在2026年4月初推出了LONGi ONE储能产品矩阵，覆盖从大型电站到工商业园区的全场景应用，依托光伏领域的渠道资源和成熟口碑，公司快速获得了储能产品订单，并在第二季度实现了一定量的交付。",
-          "media": "证券日报",
-          "url": "http://finance.eastmoney.com/a/202607313828608023.html"
-        },
-        {
-          "date": "2026-07-31",
-          "title": "铭普光磁：张伟获聘副总经理，曾任职于隆基绿能",
-          "content": "张伟，曾任普联技术有限公司深圳工厂负责人，隆基绿能（601012）电池制造中心基地副总经理，现任公司电子产品线总经理，并于2026年3月至今兼任广东省磁性元器件行业协会副会长。 　　2026年一季度，铭普光磁实现收入4.85亿元，归母净利润-2286万元。",
-          "media": "财中社",
-          "url": "http://finance.eastmoney.com/a/202607313828608951.html"
-        }
-      ],
-      "announcements": [
-        {
-          "date": "2026-08-04",
-          "type": "提供/对外担保公告",
-          "title": "隆基绿能:关于提供担保的进展公告"
-        },
-        {
-          "date": "2026-07-31",
-          "type": "董事会决议公告",
-          "title": "隆基绿能:第六届董事会2026年第二次会议决议公告"
-        },
-        {
-          "date": "2026-07-31",
-          "type": "其他",
-          "title": "隆基绿能:关于暂不向下修正“隆22转债”转股价格的公告"
-        },
-        {
-          "date": "2026-07-31",
-          "type": "调研活动",
-          "title": "隆基绿能:投资者关系活动记录表(2026年7月)"
-        },
-        {
-          "date": "2026-07-24",
-          "type": "其他",
-          "title": "隆基绿能:关于“隆22转债”预计满足转股价格向下修正条件的提示性公告"
-        }
-      ],
-      "research": [],
-      "sentiment": {
-        "sentiment": 1.0,
-        "score": 55.0,
-        "tag": "中性",
-        "pos": 1,
-        "neg": 0
-      },
-      "pos52": 0.488,
-      "dims": [
-        83.5,
-        38.5,
-        19.2,
-        67.9,
-        77.2,
-        55.0
-      ],
-      "total": 56.1,
-      "grade": "D",
-      "action": "卖出/规避",
-      "rank": 8
     },
     {
       "name": "比亚迪",
@@ -1148,27 +1533,47 @@
       "industry": "新能源车",
       "brief": "新能源车垂直一体化,出口高增长",
       "quote": {
-        "price": 90.4,
+        "price": 90.35,
         "prev_close": 91.15,
         "high": 91.66,
         "low": 89.93,
         "open": 91.18,
-        "change_pct": -0.82,
-        "volume": 166696.0,
-        "amount": 1510230000.0,
-        "turnover_rate": 0.48,
-        "pe_ttm": 29.92,
-        "pe_dynamic": 50.45,
-        "pe_static": 25.27,
-        "volume_ratio": 0.71,
-        "market_cap": 824195000000.0001,
-        "float_cap": 315190000000.0,
-        "high52": 100.27,
-        "low52": 82.04,
-        "pb": 3.6
+        "change_pct": -0.88,
+        "volume": 204008,
+        "amount": 1846690987.65,
+        "turnover_rate": 0.59,
+        "pe_dynamic": 50.42,
+        "pe_ttm": 25.25,
+        "pe_static": 3.6,
+        "bps": 25.4368305,
+        "market_cap": 823738799997.75,
+        "float_cap": 315015529725.0,
+        "high52": 116.23,
+        "low52": 77.24,
+        "pb": 3.5519362367099943
       },
-      "tech": {},
-      "finance": {},
+      "tech": {
+        "close": 90.35,
+        "ma20": 92.47,
+        "ma60": 90.3,
+        "rsi14": 47.1,
+        "mom20": 0.59,
+        "vol20": 24.84,
+        "max_dd60": -19.25,
+        "ma20_slope": 8.66
+      },
+      "finance": {
+        "report_date": "2026-03-31",
+        "report_name": "2026一季报",
+        "roe": 1.65,
+        "roe_annual": 6.6,
+        "gross_margin": 18.81,
+        "rev_yoy": -11.819136563905,
+        "profit_yoy": -55.384405326715,
+        "eps": 0.448,
+        "cfps": 0.306048524996,
+        "net_margin": 18.806213978
+      },
       "news": [
         {
           "date": "2026-08-10",
@@ -1254,7 +1659,43 @@
           "title": "比亚迪:2026年7月9日投资者关系活动记录表"
         }
       ],
-      "research": [],
+      "research": [
+        {
+          "date": "2026-08-03",
+          "org": "东吴证券",
+          "rating": "买入",
+          "target": null,
+          "title": "比亚迪2026年7月销量点评：销量环比改善，出口再创新高、二代刀片切换加速"
+        },
+        {
+          "date": "2026-06-03",
+          "org": "开源证券",
+          "rating": "买入(Buy)",
+          "target": null,
+          "title": "公司信息更新报告：5月海外销量首破16万辆，国内销量环比增长19.8%"
+        },
+        {
+          "date": "2026-06-01",
+          "org": "太平洋",
+          "rating": "买入",
+          "target": null,
+          "title": "比亚迪的CNOA时刻"
+        },
+        {
+          "date": "2026-05-24",
+          "org": "国元证券",
+          "rating": "买入",
+          "target": null,
+          "title": "深度报告：技术驱动后期大众市场，产能出海加速全球突破"
+        },
+        {
+          "date": "2026-05-07",
+          "org": "华金证券",
+          "rating": "买入",
+          "target": null,
+          "title": "2026年一季报点评：海外销量保持高增，闪充带动产品矩阵升级"
+        }
+      ],
       "sentiment": {
         "sentiment": 2.93,
         "score": 64.7,
@@ -1262,16 +1703,193 @@
         "pos": 4,
         "neg": 0
       },
-      "pos52": 0.459,
+      "pos52": 0.336,
       "dims": [
-        62.3,
+        63.2,
         54.6,
         22.9,
         54.5,
         82.7,
         64.7
       ],
-      "total": 55.5,
+      "total": 55.7,
+      "grade": "D",
+      "action": "卖出/规避",
+      "rank": 8
+    },
+    {
+      "name": "隆基绿能",
+      "code": "601012",
+      "secid": "1.601012",
+      "industry": "光伏",
+      "brief": "光伏组件龙头,行业产能过剩承压",
+      "quote": {
+        "price": 12.86,
+        "prev_close": 12.94,
+        "high": 12.99,
+        "low": 12.82,
+        "open": 12.94,
+        "change_pct": -0.62,
+        "volume": 600855,
+        "amount": 774959410.0,
+        "turnover_rate": 0.79,
+        "pe_dynamic": -12.69,
+        "pe_ttm": -15.18,
+        "pe_static": 1.93,
+        "bps": 6.6602784,
+        "market_cap": 97453969243.28,
+        "float_cap": 97453872201.72,
+        "high52": 23.57,
+        "low52": 11.41,
+        "pb": 1.9308502179128126
+      },
+      "tech": {
+        "close": 12.87,
+        "ma20": 12.61,
+        "ma60": 13.04,
+        "rsi14": 56.4,
+        "mom20": 9.72,
+        "vol20": 30.35,
+        "max_dd60": -24.23,
+        "ma20_slope": 0.57
+      },
+      "finance": {
+        "report_date": "2026-03-31",
+        "report_name": "2026一季报",
+        "roe": -3.61,
+        "roe_annual": -14.44,
+        "gross_margin": -1.19,
+        "rev_yoy": -18.025461201503,
+        "profit_yoy": -34.197566456205,
+        "eps": -0.25,
+        "cfps": -0.323119758869,
+        "net_margin": -1.1879332758
+      },
+      "news": [
+        {
+          "date": "2026-08-07",
+          "title": "隆基绿能：将为Innovo Renewables 71MWp项目供应BC组件",
+          "content": "人民财讯8月7日电，8月7日，隆基绿能宣布将为Innovo Renewables S.p.A.（简称“Innovo Renewables”）在意大利开发建设的71MWp集中式光伏项目供应Hi-MO 9高效BC组件。",
+          "media": "证券时报网",
+          "url": "http://finance.eastmoney.com/a/202608073835183220.html"
+        },
+        {
+          "date": "2026-08-07",
+          "title": "隆基绿能：将为Innovo Renewables意大利71MWp项目供应BC组件",
+          "content": "8月7日，隆基绿能宣布将为Innovo Renewables S.p.A.在意大利开发建设的71MWp集中式光伏项目供应Hi-MO 9高效BC组件。",
+          "media": "第一财经",
+          "url": "http://finance.eastmoney.com/a/202608073835183837.html"
+        },
+        {
+          "date": "2026-08-04",
+          "title": "隆基绿能：公司无逾期担保",
+          "content": "8月4日，隆基绿能发布公告称，公司未对控股股东和实际控制人及其关联人提供担保，亦无逾期担保。",
+          "media": "证券日报",
+          "url": "http://finance.eastmoney.com/a/202608043831498746.html"
+        },
+        {
+          "date": "2026-07-31",
+          "title": "隆基绿能：公司HPBC组件功率在650W以上",
+          "content": "证券日报网7月31日讯 ，隆基绿能在接受调研时表示，根据近期发布的光伏组件效率新国标，BC光伏组件的最低效率要求为23.5%，对应组件功率约635W（按照组件尺寸2382mm×1134mm测算）。",
+          "media": "证券日报",
+          "url": "http://finance.eastmoney.com/a/202607313828631931.html"
+        },
+        {
+          "date": "2026-07-31",
+          "title": "隆基绿能：公司ACM技术采用纳米合金材料制成",
+          "content": "证券日报网7月31日讯 ，隆基绿能在接受调研时表示，公司ACM（纳米合金矩阵式接触）技术采用纳米合金材料制成，结合了多种金属的优异特性。围绕ACM技术，公司已搭建起涵盖核心材料、工艺制程与设备适配的全链条知识产权体系，构筑了坚实的技术护城河。",
+          "media": "证券日报",
+          "url": "http://finance.eastmoney.com/a/202607313828633861.html"
+        },
+        {
+          "date": "2026-07-31",
+          "title": "隆基绿能：钙钛矿电池技术仍属于公司的研发储备技术",
+          "content": "证券日报网7月31日讯 ，隆基绿能在接受调研时表示，钙钛矿电池技术是未来超高效太阳能电池的重要技术路线，公司对此保持持续研究，多次刷新了晶硅-钙钛矿叠层电池效率世界纪录，为钙钛矿电池技术从实验室走向产业化应用夯实基础。现阶段，钙钛矿电池技术仍属于公司的研发储备技术。",
+          "media": "证券日报",
+          "url": "http://finance.eastmoney.com/a/202607313828633030.html"
+        },
+        {
+          "date": "2026-07-31",
+          "title": "隆基绿能：公司在2026年4月初推出了LONGi ONE储能产品矩阵",
+          "content": "证券日报网7月31日讯 ，隆基绿能在接受调研时表示，公司在2026年4月初推出了LONGi ONE储能产品矩阵，覆盖从大型电站到工商业园区的全场景应用，依托光伏领域的渠道资源和成熟口碑，公司快速获得了储能产品订单，并在第二季度实现了一定量的交付。",
+          "media": "证券日报",
+          "url": "http://finance.eastmoney.com/a/202607313828608023.html"
+        },
+        {
+          "date": "2026-07-31",
+          "title": "铭普光磁：张伟获聘副总经理，曾任职于隆基绿能",
+          "content": "张伟，曾任普联技术有限公司深圳工厂负责人，隆基绿能（601012）电池制造中心基地副总经理，现任公司电子产品线总经理，并于2026年3月至今兼任广东省磁性元器件行业协会副会长。 　　2026年一季度，铭普光磁实现收入4.85亿元，归母净利润-2286万元。",
+          "media": "财中社",
+          "url": "http://finance.eastmoney.com/a/202607313828608951.html"
+        }
+      ],
+      "announcements": [
+        {
+          "date": "2026-08-04",
+          "type": "提供/对外担保公告",
+          "title": "隆基绿能:关于提供担保的进展公告"
+        },
+        {
+          "date": "2026-07-31",
+          "type": "董事会决议公告",
+          "title": "隆基绿能:第六届董事会2026年第二次会议决议公告"
+        },
+        {
+          "date": "2026-07-31",
+          "type": "其他",
+          "title": "隆基绿能:关于暂不向下修正“隆22转债”转股价格的公告"
+        },
+        {
+          "date": "2026-07-31",
+          "type": "调研活动",
+          "title": "隆基绿能:投资者关系活动记录表(2026年7月)"
+        },
+        {
+          "date": "2026-07-24",
+          "type": "其他",
+          "title": "隆基绿能:关于“隆22转债”预计满足转股价格向下修正条件的提示性公告"
+        }
+      ],
+      "research": [
+        {
+          "date": "2026-05-18",
+          "org": "太平洋",
+          "rating": "买入",
+          "target": null,
+          "title": "隆基绿能2025年年报与2026年一季报点评：BC技术降本增效加速盈利拐点，光储协同打造第二增长曲线"
+        },
+        {
+          "date": "2026-04-30",
+          "org": "东吴证券",
+          "rating": "买入",
+          "target": null,
+          "title": "2025年年报&2026年一季报点评：短期业绩承压，BC出货高增"
+        },
+        {
+          "date": "2026-04-29",
+          "org": "国金证券",
+          "rating": "买入",
+          "target": null,
+          "title": "高效BC持续放量，收购精控推进光储协同"
+        }
+      ],
+      "sentiment": {
+        "sentiment": 1.0,
+        "score": 55.0,
+        "tag": "中性",
+        "pos": 1,
+        "neg": 0
+      },
+      "pos52": 0.119,
+      "dims": [
+        78.1,
+        38.5,
+        19.2,
+        67.8,
+        77.2,
+        55.0
+      ],
+      "total": 54.9,
       "grade": "D",
       "action": "卖出/规避",
       "rank": 9
@@ -1283,27 +1901,47 @@
       "industry": "半导体",
       "brief": "大陆晶圆代工龙头,国产替代主线",
       "quote": {
-        "price": 127.02,
+        "price": 126.5,
         "prev_close": 126.25,
         "high": 128.43,
         "low": 124.5,
         "open": 124.85,
-        "change_pct": 0.61,
-        "volume": 26709950.0,
-        "amount": 3379810000.0,
-        "turnover_rate": 1.34,
-        "pe_ttm": 215.52,
-        "pe_dynamic": 199.72,
-        "pe_static": 215.73,
-        "volume_ratio": 0.94,
-        "market_cap": 1087426000000.0,
-        "float_cap": 253984000000.0,
+        "change_pct": 0.2,
+        "volume": 31862392.0,
+        "amount": 4032960000.0,
+        "turnover_rate": 1.59,
+        "pe_ttm": 214.64,
+        "pe_dynamic": 198.9,
+        "pe_static": 214.84,
+        "volume_ratio": 0.69,
+        "market_cap": 1082974000000.0,
+        "float_cap": 252944999999.99997,
         "high52": 151.5,
         "low52": 101.0,
-        "pb": 5.71
+        "pb": 5.69
       },
-      "tech": {},
-      "finance": {},
+      "tech": {
+        "close": 126.5,
+        "ma20": 136.03,
+        "ma60": 139.93,
+        "rsi14": 25.0,
+        "mom20": -21.42,
+        "vol20": 73.45,
+        "max_dd60": -32.66,
+        "ma20_slope": -9.34
+      },
+      "finance": {
+        "report_date": "2026-03-31",
+        "report_name": "2026一季报",
+        "roe": 0.9,
+        "roe_annual": 3.6,
+        "gross_margin": 21.48,
+        "rev_yoy": 8.073898148497,
+        "profit_yoy": 0.356465104757,
+        "eps": 0.17,
+        "cfps": 0.641349093381,
+        "net_margin": 21.4758595824
+      },
       "news": [
         {
           "date": "2026-08-10",
@@ -1389,7 +2027,22 @@
           "title": "中芯国际:中芯国际关于作废处理2021年科创板限制性股票激励计划部分限制性股票的公告"
         }
       ],
-      "research": [],
+      "research": [
+        {
+          "date": "2026-05-22",
+          "org": "中邮证券",
+          "rating": "买入",
+          "target": null,
+          "title": "再上新台阶"
+        },
+        {
+          "date": "2026-02-26",
+          "org": "中邮证券",
+          "rating": "买入",
+          "target": null,
+          "title": "收入创新高"
+        }
+      ],
       "sentiment": {
         "sentiment": 0.19,
         "score": 51.0,
@@ -1397,16 +2050,16 @@
         "pos": 3,
         "neg": 1
       },
-      "pos52": 0.515,
+      "pos52": 0.505,
       "dims": [
-        53.3,
+        53.0,
         52.1,
         51.7,
         31.5,
         62.5,
         51.0
       ],
-      "total": 50.8,
+      "total": 50.7,
       "grade": "D",
       "action": "卖出/规避",
       "rank": 10
@@ -1420,27 +2073,47 @@
       "industry": "化工",
       "brief": "MDI 全球龙头,新材料打开空间",
       "quote": {
-        "price": 77.49,
+        "price": 76.18,
         "prev_close": 78.01,
         "high": 79.0,
-        "low": 77.05,
+        "low": 76.02,
         "open": 78.04,
-        "change_pct": -0.67,
-        "volume": 204883.0,
-        "amount": 1597310000.0,
-        "turnover_rate": 0.65,
-        "pe_ttm": 18.43,
-        "pe_dynamic": 16.31,
-        "pe_static": 19.36,
-        "volume_ratio": 1.12,
-        "market_cap": 242580000000.00003,
-        "float_cap": 242580000000.00003,
+        "change_pct": -2.35,
+        "volume": 312036.0,
+        "amount": 2416600000.0,
+        "turnover_rate": 1.0,
+        "pe_ttm": 18.12,
+        "pe_dynamic": 16.04,
+        "pe_static": 19.04,
+        "volume_ratio": 1.06,
+        "market_cap": 238479000000.0,
+        "float_cap": 238479000000.0,
         "high52": 85.81,
         "low52": 70.21,
-        "pb": 2.26
+        "pb": 2.22
       },
-      "tech": {},
-      "finance": {},
+      "tech": {
+        "close": 76.19,
+        "ma20": 73.88,
+        "ma60": 72.66,
+        "rsi14": 56.5,
+        "mom20": 9.47,
+        "vol20": 31.3,
+        "max_dd60": -14.44,
+        "ma20_slope": 4.82
+      },
+      "finance": {
+        "report_date": "2026-03-31",
+        "report_name": "2026一季报",
+        "roe": 3.38,
+        "roe_annual": 13.52,
+        "gross_margin": 14.73,
+        "rev_yoy": 25.504673217753,
+        "profit_yoy": 20.623880961541,
+        "eps": 1.19,
+        "cfps": 2.19037832317,
+        "net_margin": 14.7280439014
+      },
       "news": [
         {
           "date": "2026-08-06",
@@ -1526,7 +2199,43 @@
           "title": "万华化学:万华化学2026年半年度业绩预增公告"
         }
       ],
-      "research": [],
+      "research": [
+        {
+          "date": "2026-07-07",
+          "org": "国信证券",
+          "rating": "优于大市",
+          "target": null,
+          "title": "聚氨酯、石化板块景气回升，1H26归母净利润98-104亿元"
+        },
+        {
+          "date": "2026-04-23",
+          "org": "中邮证券",
+          "rating": "买入",
+          "target": null,
+          "title": "产销保持高增长，一季度归母净利增长超20%"
+        },
+        {
+          "date": "2026-04-23",
+          "org": "中银证券",
+          "rating": "买入",
+          "target": null,
+          "title": "龙头穿越周期低谷，新材料板块加速放量"
+        },
+        {
+          "date": "2026-04-23",
+          "org": "开源证券",
+          "rating": "买入(Buy)",
+          "target": null,
+          "title": "公司信息更新报告：至暗时刻已过，看好聚氨酯巨头稳定供应全球"
+        },
+        {
+          "date": "2026-04-21",
+          "org": "国信证券",
+          "rating": "优于大市",
+          "target": null,
+          "title": "第一季度归母净利润同比增长20.6%，看好聚氨酯景气回升"
+        }
+      ],
       "sentiment": {
         "sentiment": 4.0,
         "score": 70.0,
@@ -1534,16 +2243,16 @@
         "pos": 1,
         "neg": 0
       },
-      "pos52": 0.467,
+      "pos52": 0.383,
       "dims": [
-        73.9,
+        72.5,
         68.2,
         84.7,
         87.9,
-        77.7,
+        76.2,
         70.0
       ],
-      "total": 76.7,
+      "total": 76.2,
       "grade": "B",
       "action": "关注",
       "rank": 1
@@ -1555,28 +2264,55 @@
       "industry": "动力电池",
       "brief": "全球动力电池龙头,储能第二曲线",
       "quote": {
-        "price": 394.04,
+        "price": 392.7,
         "prev_close": 393.87,
         "high": 395.28,
         "low": 389.52,
         "open": 395.0,
-        "change_pct": 0.04,
-        "volume": 93210,
-        "amount": 3664995523.92,
-        "turnover_rate": 0.22,
-        "pe_dynamic": 21.06,
-        "pe_ttm": 25.25,
-        "pe_static": 4.89,
+        "change_pct": -0.3,
+        "volume": 130190,
+        "amount": 5113746029.03,
+        "turnover_rate": 0.31,
+        "pe_dynamic": 20.99,
+        "pe_ttm": 25.16,
+        "pe_static": 4.87,
         "bps": 81.9931544,
-        "market_cap": 1823087104282.76,
-        "float_cap": 1678642324726.76,
+        "market_cap": 1816887386691.3,
+        "float_cap": 1672933816161.3,
         "high52": 467.35,
         "low52": 248.41,
-        "pb": 4.805767053157794
+        "pb": 4.789424225396066
       },
-      "tech": {},
-      "finance": {},
+      "tech": {
+        "close": 392.7,
+        "ma20": 385.81,
+        "ma60": 391.4,
+        "rsi14": 61.2,
+        "mom20": 8.3,
+        "vol20": 38.77,
+        "max_dd60": -19.68,
+        "ma20_slope": 1.09
+      },
+      "finance": {
+        "report_date": "2026-06-30",
+        "report_name": "2026中报",
+        "roe": 12.08,
+        "roe_annual": 24.16,
+        "gross_margin": 23.93,
+        "rev_yoy": 54.800369148545,
+        "profit_yoy": 41.983941749454,
+        "eps": 9.51,
+        "cfps": 13.015213596184,
+        "net_margin": 23.9283938867
+      },
       "news": [
+        {
+          "date": "2026-08-11",
+          "title": "宁德时代旗下宁家服务全球十大站点同步开业",
+          "content": "上证报中国证券网讯（记者俞立严）8月10日，宁德时代旗下独立后市场品牌宁家服务在海口直营体验中心开启2026年度品牌日。活动以“NexttoNew向新”为主题，围绕技术、服务、生态全面升级，进一步兑现“您身边的新能源服务专家”的品牌承诺。",
+          "media": "上海证券报·中国证券网",
+          "url": "http://finance.eastmoney.com/a/202608113837759735.html"
+        },
         {
           "date": "2026-08-10",
           "title": "宁德时代重要锂矿复产有新进展",
@@ -1625,13 +2361,6 @@
           "content": "新京报贝壳财经讯（记者林子）8月10日，宁德时代后市场品牌宁家服务开启2026年度品牌日，活动当日，宁家服务全球十大站点同步开业，涵盖海口、杭州、淄博、沈阳、广州、遂宁、宁波、香港以及海外的土耳其伊斯坦布尔、挪威奥斯陆。",
           "media": "新京报",
           "url": "http://finance.eastmoney.com/a/202608103836967921.html"
-        },
-        {
-          "date": "2026-08-10",
-          "title": "宁德时代与连云港公交签署五年战略合作协议",
-          "content": "据宁德时代8月10日消息，近日，宁德时代与连云港交控下属公交集团签署五年期战略合作框架协议。双方将围绕车辆后市场服务与城市换电网络领域深化合作，助力城市交通低碳发展。",
-          "media": "界面新闻",
-          "url": "http://finance.eastmoney.com/a/202608103836722264.html"
         }
       ],
       "announcements": [
@@ -1661,24 +2390,60 @@
           "title": "宁德时代:2026年7月24日投资者关系活动记录表"
         }
       ],
-      "research": [],
+      "research": [
+        {
+          "date": "2026-07-31",
+          "org": "国信证券",
+          "rating": "优于大市",
+          "target": null,
+          "title": "业绩维持快速增长，回购彰显发展信心"
+        },
+        {
+          "date": "2026-07-29",
+          "org": "山西证券",
+          "rating": "买入",
+          "target": null,
+          "title": "中报业绩符合预期，拟推出200-400亿元回购计划"
+        },
+        {
+          "date": "2026-07-28",
+          "org": "西南证券",
+          "rating": "买入",
+          "target": null,
+          "title": "2026年半年报点评：回购股份夯实信心，业绩持续增长，符合预期"
+        },
+        {
+          "date": "2026-07-28",
+          "org": "交银国际证券",
+          "rating": "买入",
+          "target": null,
+          "title": "2季度出货超预期，关注盈利修复节奏及供需变化；维持买入"
+        },
+        {
+          "date": "2026-07-27",
+          "org": "群益证券",
+          "rating": "买进(Buy)",
+          "target": null,
+          "title": "公司半年报业绩快速增长，拟回购A股股份，建议“买进”"
+        }
+      ],
       "sentiment": {
-        "sentiment": 2.49,
-        "score": 62.5,
+        "sentiment": 2.0,
+        "score": 60.0,
         "tag": "利好",
-        "pos": 4,
+        "pos": 3,
         "neg": 0
       },
-      "pos52": 0.665,
+      "pos52": 0.659,
       "dims": [
         68.7,
         79.1,
         92.0,
         77.2,
         70.0,
-        62.5
+        60.0
       ],
-      "total": 75.9,
+      "total": 75.7,
       "grade": "B",
       "action": "关注",
       "rank": 2
@@ -1690,27 +2455,47 @@
       "industry": "家电",
       "brief": "白电龙头,机器人与工业自动化",
       "quote": {
-        "price": 85.45,
+        "price": 85.62,
         "prev_close": 85.3,
         "high": 86.12,
         "low": 85.03,
         "open": 85.26,
-        "change_pct": 0.18,
-        "volume": 105501,
-        "amount": 904026259.04,
-        "turnover_rate": 0.15,
-        "pe_dynamic": 12.86,
-        "pe_ttm": 14.83,
+        "change_pct": 0.38,
+        "volume": 151934,
+        "amount": 1302071466.07,
+        "turnover_rate": 0.22,
+        "pe_dynamic": 12.88,
+        "pe_ttm": 14.86,
         "pe_static": 3.16,
         "bps": 30.5536332,
-        "market_cap": 651848020050.4,
-        "float_cap": 588278049086.25,
+        "market_cap": 653144850517.4401,
+        "float_cap": 589448409160.5,
         "high52": 89.5,
         "low52": 66.81,
-        "pb": 2.796721405950504
+        "pb": 2.8022853923637467
       },
-      "tech": {},
-      "finance": {},
+      "tech": {
+        "close": 85.62,
+        "ma20": 84.96,
+        "ma60": 79.93,
+        "rsi14": 53.0,
+        "mom20": 5.47,
+        "vol20": 21.79,
+        "max_dd60": -18.18,
+        "ma20_slope": 10.47
+      },
+      "finance": {
+        "report_date": "2026-03-31",
+        "report_name": "2026一季报",
+        "roe": 5.56,
+        "roe_annual": 22.24,
+        "gross_margin": 25.48,
+        "rev_yoy": 2.454635021947,
+        "profit_yoy": 2.031220956812,
+        "eps": 1.69,
+        "cfps": 1.91090853469,
+        "net_margin": 25.5711317621
+      },
       "news": [
         {
           "date": "2026-08-05",
@@ -1796,7 +2581,43 @@
           "title": "美的集团:关于自主行权模式下第九期股权激励计划第三个行权期符合行权条件开始行权的提示性公告"
         }
       ],
-      "research": [],
+      "research": [
+        {
+          "date": "2026-07-31",
+          "org": "开源证券",
+          "rating": "买入(Buy)",
+          "target": null,
+          "title": "公司深度报告：美的空调欧洲出圈，拆解美的欧洲OBM业务进阶之路"
+        },
+        {
+          "date": "2026-05-12",
+          "org": "交银国际证券",
+          "rating": "买入",
+          "target": null,
+          "title": "稳步推进ToB业务与全球化，迈向技术驱动的全球工业科技集团"
+        },
+        {
+          "date": "2026-05-07",
+          "org": "开源证券",
+          "rating": "买入(Buy)",
+          "target": null,
+          "title": "公司信息更新报告：高基数下增长凸显龙头韧性，全额注销回购提高股息"
+        },
+        {
+          "date": "2026-05-06",
+          "org": "交银国际证券",
+          "rating": "买入",
+          "target": null,
+          "title": "1Q26业绩符合预期，全年稳健增长可期；维持买入"
+        },
+        {
+          "date": "2026-05-05",
+          "org": "太平洋",
+          "rating": "买入",
+          "target": null,
+          "title": "美的集团：2026Q1收入业绩增速回正，楼宇和机器人业务双位数增长"
+        }
+      ],
       "sentiment": {
         "sentiment": 2.13,
         "score": 60.6,
@@ -1804,9 +2625,9 @@
         "pos": 7,
         "neg": 1
       },
-      "pos52": 0.822,
+      "pos52": 0.829,
       "dims": [
-        84.4,
+        84.6,
         79.7,
         44.8,
         82.5,
@@ -1825,27 +2646,47 @@
       "industry": "白酒",
       "brief": "超高端白酒龙头,品牌稀缺性强",
       "quote": {
-        "price": 1346.48,
+        "price": 1340.65,
         "prev_close": 1348.86,
         "high": 1352.65,
-        "low": 1338.18,
+        "low": 1338.0,
         "open": 1348.0,
-        "change_pct": -0.18,
-        "volume": 15139.0,
-        "amount": 2036500000.0,
-        "turnover_rate": 0.12,
-        "pe_ttm": 20.35,
-        "pe_dynamic": 15.45,
-        "pe_static": 20.45,
-        "volume_ratio": 0.78,
-        "market_cap": 1683209999999.9998,
-        "float_cap": 1683209999999.9998,
+        "change_pct": -0.61,
+        "volume": 20034.0,
+        "amount": 2693190000.0,
+        "turnover_rate": 0.16,
+        "pe_ttm": 20.26,
+        "pe_dynamic": 15.38,
+        "pe_static": 20.36,
+        "volume_ratio": 0.64,
+        "market_cap": 1675922000000.0,
+        "float_cap": 1675922000000.0,
         "high52": 1483.75,
         "low52": 1213.97,
-        "pb": 7.23
+        "pb": 7.2
       },
-      "tech": {},
-      "finance": {},
+      "tech": {
+        "close": 1340.83,
+        "ma20": 1311.85,
+        "ma60": 1256.73,
+        "rsi14": 58.1,
+        "mom20": 10.37,
+        "vol20": 31.93,
+        "max_dd60": -14.18,
+        "ma20_slope": 9.57
+      },
+      "finance": {
+        "report_date": "2026-03-31",
+        "report_name": "2026一季报",
+        "roe": 10.57,
+        "roe_annual": 42.28,
+        "gross_margin": 88.46,
+        "rev_yoy": 6.336009277123,
+        "profit_yoy": 1.471418294983,
+        "eps": 21.76,
+        "cfps": 21.488885503142,
+        "net_margin": 89.7592176242
+      },
       "news": [
         {
           "date": "2026-08-10",
@@ -1931,7 +2772,43 @@
           "title": "贵州茅台:贵州茅台第五届董事会2026年度第一次会议决议公告"
         }
       ],
-      "research": [],
+      "research": [
+        {
+          "date": "2026-07-23",
+          "org": "中邮证券",
+          "rating": "买入",
+          "target": null,
+          "title": "需求根基稳固，市场化定价持续兑现"
+        },
+        {
+          "date": "2026-07-20",
+          "org": "群益证券",
+          "rating": "区间操作(Tranding Buy)",
+          "target": null,
+          "title": "飞天茅台年内二次提价，进一步落实市场化机制"
+        },
+        {
+          "date": "2026-05-25",
+          "org": "诚通证券",
+          "rating": "强烈推荐",
+          "target": null,
+          "title": "2025年年报及2026年一季报点评：顺势出清舒缓压力巩固优势稳健前行"
+        },
+        {
+          "date": "2026-05-05",
+          "org": "华鑫证券",
+          "rating": "买入",
+          "target": null,
+          "title": "公司事件点评报告：i茅台持续发力，改革效果初显"
+        },
+        {
+          "date": "2026-04-29",
+          "org": "万联证券",
+          "rating": "增持",
+          "target": null,
+          "title": "点评报告：业绩稳健增长，直销收入首次超越代理渠道"
+        }
+      ],
       "sentiment": {
         "sentiment": 1.1,
         "score": 55.5,
@@ -1939,16 +2816,16 @@
         "pos": 3,
         "neg": 2
       },
-      "pos52": 0.491,
+      "pos52": 0.47,
       "dims": [
-        67.1,
+        65.5,
         90.8,
         50.1,
         87.9,
-        75.8,
+        75.5,
         55.5
       ],
-      "total": 72.2,
+      "total": 71.8,
       "grade": "C",
       "action": "观察",
       "rank": 4
@@ -1960,27 +2837,47 @@
       "industry": "医药",
       "brief": "创新药龙头,管线进入收获期",
       "quote": {
-        "price": 55.7,
+        "price": 55.07,
         "prev_close": 54.18,
         "high": 55.8,
         "low": 53.76,
         "open": 53.79,
-        "change_pct": 2.81,
-        "volume": 830417,
-        "amount": 4576753933.0,
-        "turnover_rate": 1.3,
-        "pe_dynamic": 40.5,
-        "pe_ttm": 47.94,
-        "pe_static": 5.93,
-        "bps": 9.5863113,
-        "market_cap": 369692032981.80005,
-        "float_cap": 355310426661.8,
-        "high52": 73.84,
-        "low52": 45.26,
-        "pb": 5.810368373912498
+        "change_pct": 1.64,
+        "volume": 1040531.0,
+        "amount": 5738910000.0,
+        "turnover_rate": 1.63,
+        "pe_ttm": 45.02,
+        "pe_dynamic": 40.04,
+        "pe_static": 47.4,
+        "volume_ratio": 1.31,
+        "market_cap": 365511000000.0,
+        "float_cap": 351292000000.0,
+        "high52": 59.6,
+        "low52": 48.76,
+        "pb": 5.86
       },
-      "tech": {},
-      "finance": {},
+      "tech": {
+        "close": 55.08,
+        "ma20": 54.32,
+        "ma60": 51.71,
+        "rsi14": 48.6,
+        "mom20": 0.47,
+        "vol20": 41.33,
+        "max_dd60": -20.1,
+        "ma20_slope": 3.98
+      },
+      "finance": {
+        "report_date": "2026-03-31",
+        "report_name": "2026一季报",
+        "roe": 4.15,
+        "roe_annual": 16.6,
+        "gross_margin": 86.6,
+        "rev_yoy": 12.975362979304,
+        "profit_yoy": 21.782316948345,
+        "eps": 0.34,
+        "cfps": 0.118490615868,
+        "net_margin": 86.5986071559
+      },
       "news": [
         {
           "date": "2026-08-10",
@@ -2066,7 +2963,43 @@
           "title": "恒瑞医药:H股公告-翌日披露报表"
         }
       ],
-      "research": [],
+      "research": [
+        {
+          "date": "2026-07-19",
+          "org": "国金证券",
+          "rating": "买入",
+          "target": null,
+          "title": "蓝海市场开花，眼科领域步入收获期"
+        },
+        {
+          "date": "2026-07-01",
+          "org": "西南证券",
+          "rating": "买入",
+          "target": null,
+          "title": "研发能力再得验证，创新成果加速落地"
+        },
+        {
+          "date": "2026-05-07",
+          "org": "中邮证券",
+          "rating": "买入",
+          "target": null,
+          "title": "BD收入稳健，26年创新药指引收入增速30%+"
+        },
+        {
+          "date": "2026-05-06",
+          "org": "东吴证券",
+          "rating": "买入",
+          "target": null,
+          "title": "2026年一季报点评：进入创新药主导的高质量发展阶段，国际化稳步推进"
+        },
+        {
+          "date": "2026-04-23",
+          "org": "国金证券",
+          "rating": "买入",
+          "target": null,
+          "title": "业绩稳健增长，研发成果密集兑现"
+        }
+      ],
       "sentiment": {
         "sentiment": 1.84,
         "score": 59.2,
@@ -2074,16 +3007,16 @@
         "pos": 4,
         "neg": 0
       },
-      "pos52": 0.365,
+      "pos52": 0.582,
       "dims": [
-        57.6,
+        56.5,
         80.1,
         74.6,
         82.5,
-        67.8,
+        68.3,
         59.2
       ],
-      "total": 70.7,
+      "total": 70.5,
       "grade": "C",
       "action": "观察",
       "rank": 5

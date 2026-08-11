@@ -48,6 +48,30 @@ POOL = [
 ]
 INDEX_HS300 = {"name": "沪深300", "code": "000300", "secid": "1.000300"}
 
+# ---------------------------------------------------------------
+# 指数 / ETF 观察列表(仅供参考,不参与个股评分)
+#   宽基指数:打包整个市场(分散最高)
+#   行业ETF:打包一个行业(分散中等)
+#   注:这些是"分类标签"对应的可投资标的,帮助理解板块与个股的关系
+# ---------------------------------------------------------------
+ETF_POOL = {
+    "indices": [
+        {"name": "上证50", "code": "000016", "secid": "1.000016", "brief": "沪市最大的 50 家巨头,最稳的一篮子"},
+        {"name": "沪深300", "code": "000300", "secid": "1.000300", "brief": "沪深两市最大的 300 家,最常被定投"},
+        {"name": "中证500", "code": "000905", "secid": "1.000905", "brief": "排名 301~800 的中坚公司,弹性更大"},
+        {"name": "创业板指", "code": "399006", "secid": "0.399006", "brief": "成长型公司,涨跌波动较大"},
+        {"name": "科创50", "code": "000688", "secid": "1.000688", "brief": "科创板科技 50 家,偏硬科技"},
+    ],
+    "industry": [
+        {"name": "军工ETF", "code": "512660", "secid": "1.512660", "brief": "国防军工一篮子:航空/航天/船舶"},
+        {"name": "医药ETF", "code": "512010", "secid": "1.512010", "brief": "医药生物一篮子:制药/器械/服务"},
+        {"name": "半导体ETF", "code": "512480", "secid": "1.512480", "brief": "芯片半导体一篮子"},
+        {"name": "白酒ETF", "code": "512690", "secid": "1.512690", "brief": "白酒板块一篮子"},
+        {"name": "新能源ETF", "code": "516160", "secid": "1.516160", "brief": "新能源产业链一篮子"},
+        {"name": "证券ETF", "code": "512880", "secid": "1.512880", "brief": "券商板块一篮子,牛市放大器"},
+    ],
+}
+
 WEIGHTS = [22, 22, 18, 14, 14, 10]  # 估值/盈利/成长/趋势/波动/新闻情绪
 DIM_NAMES = ["估值", "盈利能力", "成长性", "趋势", "波动风险", "新闻情绪"]
 
@@ -511,6 +535,38 @@ def fetch_macro():
     return out
 
 
+def fetch_etf_watch():
+    """拉取宽基指数 + 行业ETF 实时行情(参考层,不参与个股评分)。
+
+    返回 {indices: [...], industry: [...]},每项含
+    {name, code, brief, price, change_pct, pe_ttm, pb, market_cap}
+    """
+    out = {"indices": [], "industry": [], "errors": []}
+    for grp, items in ETF_POOL.items():
+        for it in items:
+            try:
+                # 注意:东财 push2 接口对 ETF 价格字段编码与股票不同(差10倍),
+                # 因此指数/ETF 统一走腾讯源(已验证价格与 PE 正确)。
+                q = fetch_quote_tencent(it["secid"])
+                if not q or not q.get("price"):
+                    raise ValueError("行情为空")
+                out[grp].append({
+                    "name": it["name"],
+                    "code": it["code"],
+                    "secid": it["secid"],
+                    "brief": it["brief"],
+                    "price": q.get("price"),
+                    "change_pct": q.get("change_pct"),
+                    "pe_ttm": q.get("pe_ttm"),
+                    "pb": q.get("pb"),
+                    "market_cap": q.get("market_cap"),
+                })
+            except Exception as e:
+                out["errors"].append({"name": it.get("name"), "error": str(e)})
+            time.sleep(0.4)
+    return out
+
+
 # ---------------------------------------------------------------
 # 技术指标计算
 # ---------------------------------------------------------------
@@ -808,6 +864,19 @@ def main():
     for i, r in enumerate(results):
         ranked.append(dict(r, rank=i + 1))
 
+    # 指数 / ETF 观察列表(宽基 + 行业)
+    etf_watch = fetch_etf_watch()
+    etf_ok = len(etf_watch["indices"]) + len(etf_watch["industry"])
+    print("\n指数/ETF 观察:成功 {ok} 项".format(ok=etf_ok))
+    for it in etf_watch["indices"]:
+        print("   [宽基] {name:<8} {price:>9}  涨跌 {c}%".format(
+            name=it["name"], price=it["price"], c=it["change_pct"]))
+    for it in etf_watch["industry"]:
+        print("   [行业] {name:<8} {price:>9}  涨跌 {c}%".format(
+            name=it["name"], price=it["price"], c=it["change_pct"]))
+    if etf_watch["errors"]:
+        print("   失败:", [e["name"] for e in etf_watch["errors"]])
+
     payload = {
         "meta": {
             "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -818,6 +887,7 @@ def main():
         },
         "benchmark": bench,
         "macro": fetch_macro(),
+        "etf": etf_watch,
         "pool": ranked,
         "scores": ranked[:5],
         "weights": [{"name": n, "w": w} for n, w in zip(DIM_NAMES, WEIGHTS)],
