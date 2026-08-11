@@ -26,8 +26,10 @@
   - 推送脚本 /Users/lizhen/ai-experiment/push_wechat.py:`echo "正文" | python3 push_wechat.py "标题"`(支持 stdin/argv)
   - 接收要求:微信关注「pushplus 推送加」公众号 + 消息开关开启;实名已付费 ¥3.9 一次性
   - 勿再用 WorkBuddy 内置 push_to_wechat:工具不持久化该字段,小程序端用户不可见
-- 推送节奏(3 个自动化,prompt 内置 PushPlus 推送,均指向 /Users/lizhen/ai-experiment):
-  - 09:30 每日投资学堂提醒(automation-1786416869287,每天,今日 3 词白话+例子)
-  - 14:00 盘中快报(automation-1786416869322,工作日)
-  - 15:35 每日更新+部署+收盘日报(automation-1785918218488,每天)
-  - (曾建 09:35/11:35 盘中快报,用户 2026-08-11 要求精简为上述 3 点,已删除)
+- 推送节奏(4 个自动化,prompt 内置 PushPlus 推送,均指向 /Users/lizhen/ai-experiment):
+  - 工作日 09:30 每日投资学堂提醒(automation-1786416869287,MO-FR,今日 3 词白话+例子,末尾附 learn.html 链接)
+  - 工作日 14:00 盘中快报(automation-1786416869322,MO-FR,前3+ETF+情绪+知识卡)
+  - 工作日 15:35 每日更新+部署+收盘日报(automation-1785918218488,MO-FR,完整版:排名+今日3词+ETF速览+知识卡)
+  - 周末 15:35 周末投资周总结(automation-1786429518927,SA/SU,一周回顾+学堂复习+下周展望)
+  - 用户要求:每条推送末尾都带网站链接(放最下面);分工明确不重复,15:35 日报为保底完整版
+  - (曾建 09:35/11:35 盘中快报,用户 2026-08-11 要求精简,已删除)
