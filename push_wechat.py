@@ -6,14 +6,43 @@
     python3 push_wechat.py "标题" "正文内容"
     python3 push_wechat.py "标题" "正文" --token <你的token>   # 或写入 ~/.workbuddy/pushplus_token.txt
 Token 优先从 ~/.workbuddy/pushplus_token.txt 读取,避免明文出现在命令行/脚本仓库。
+
+模板说明:
+  - 默认 markdown 模板,内容中裸 URL 会被自动包成 [域名](URL) 链接
+  - 这样微信会识别为非裸链接,显示为正常的「服务通知」,而不是「设备通知」
 """
 import sys
 import json
 import os
+import re
 import urllib.request
 
 TOKEN_FILE = os.path.expanduser("~/.workbuddy/pushplus_token.txt")
 API = "https://www.pushplus.plus/send"
+URL_RE = re.compile(r"(https?://[^\s\n]+)")
+
+
+def auto_markdown_link(content):
+    """把裸 URL 包成 markdown 链接 [域名](URL),避免微信把消息降级为「设备通知」。"""
+    def replace(m):
+        url = m.group(1).rstrip(".,;:!?)])")
+        # 域名做链接文字(去掉 www.)
+        host = re.sub(r"^https?://(www\.)?", "", url).split("/")[0]
+        return f"[{host}]({url})"
+    return URL_RE.sub(replace, content)
+
+
+def hardbreak_lines(content):
+    """将内容中的单个换行转为 Markdown 硬换行(<br>)。
+
+    PushPlus 使用 markdown 模板时,标准 Markdown 规则是「单个换行=空格」,
+    导致多行内容被挤成一行。此函数保留段落间空行,仅把段内换行转为 <br>。
+    """
+    # 按段落分割(连续两个及以上换行 = 段落分隔)
+    paragraphs = re.split(r'\n{2,}', content)
+    # 段内单个换行 -> <br>
+    converted = [re.sub(r'\n', '<br>', p) for p in paragraphs]
+    return '\n\n'.join(converted)
 
 
 def send(title, content, token=None):
@@ -22,7 +51,14 @@ def send(title, content, token=None):
             print("ERROR: 未找到 token,请先把 PushPlus token 写入 " + TOKEN_FILE)
             sys.exit(1)
         token = open(TOKEN_FILE, encoding="utf-8").read().strip()
-    body = json.dumps({"token": token, "title": title, "content": content}).encode("utf-8")
+    # 使用 markdown 模板: 先转硬换行(防止单换行被吞),再自动链接化
+    content_md = auto_markdown_link(hardbreak_lines(content))
+    body = json.dumps({
+        "token": token,
+        "title": title,
+        "content": content_md,
+        "template": "markdown",
+    }).encode("utf-8")
     req = urllib.request.Request(
         API,
         data=body,
